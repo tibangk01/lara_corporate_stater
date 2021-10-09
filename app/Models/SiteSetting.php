@@ -7,19 +7,20 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use App\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class SiteSetting
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $description
  * @property string $slogan
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Collection|Contact[] $contacts
  *
  * @package App\Models
@@ -36,6 +37,6 @@ class SiteSetting extends Model
 
 	public function contacts()
 	{
-		return $this->hasMany(Contact::class, 'contactable_id');
+        return $this->morphMany(Contact::class, 'contactable');
 	}
 }

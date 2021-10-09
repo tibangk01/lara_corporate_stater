@@ -1,21 +1,30 @@
 <!-- ======= Top Bar ======= -->
+
 <section id="topbar" class="d-flex align-items-center">
 
     <div class="container d-flex justify-content-center justify-content-md-between">
 
         <div class="contact-info d-flex align-items-center">
 
-            <i class="bi bi-envelope d-flex align-items-center">
+            @foreach ($siteSettings as $siteSetting)
 
-                <a href="mailto:contact@example.com">contact@example.com</a>
+                @foreach ($siteSetting->contacts as $contact)
 
-            </i>
+                    @php
 
-            <i class="bi bi-phone d-flex align-items-center ms-4">
+                        $contactType = $contact->load('contactType.socialIcon');
 
-                <span>+1 5589 55488 55</span>
+                    @endphp
 
-            </i>
+                    <i class="bi bi-{{ $contact->contactType->socialIcon->class }} d-flex align-items-center {{ $loop->last ? 'ms-4' : '' }}">
+
+                        <span>{{ $contact->value }}</span>
+
+                    </i>
+
+                @endforeach
+
+            @endforeach
 
         </div>
         <div class="social-links d-none d-md-flex align-items-center">

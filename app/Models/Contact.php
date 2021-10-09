@@ -11,14 +11,15 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Contact
- * 
+ *
  * @property int $id
  * @property int $contact_type_id
  * @property int $contactable_id
  * @property string $contactable_type
+ * @property string $value
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property ContactType $contact_type
  * @property SiteSetting $site_setting
  *
@@ -36,16 +37,18 @@ class Contact extends Model
 	protected $fillable = [
 		'contact_type_id',
 		'contactable_id',
-		'contactable_type'
+		'contactable_type',
+		'value'
 	];
 
-	public function contact_type()
+	public function contactType()
 	{
 		return $this->belongsTo(ContactType::class);
 	}
 
-	public function site_setting()
-	{
-		return $this->belongsTo(SiteSetting::class, 'contactable_id');
-	}
+    public function contactable()
+    {
+        return $this->morphTo();
+    }
+
 }

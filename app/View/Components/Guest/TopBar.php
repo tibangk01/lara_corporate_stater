@@ -2,31 +2,22 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\SocialIcon;
+use App\Models\SiteSetting;
 use Illuminate\View\Component;
 
 class TopBar extends Component
 {
-    public $contacts;
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
+    public $siteSettings;
+
     public function __construct()
     {
-        $contacts = SocialIcon::with('contactType')->get();
+        $siteSettings = SiteSetting::with('contacts')
+            ->first()
+            ->get();
 
-        dd($contacts);
-
-        $this->contacts ;
+        $this->siteSettings = $siteSettings;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         return view('components.guest.top-bar');
