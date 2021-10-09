@@ -12,13 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ContactType
- * 
+ *
  * @property int $id
- * @property int $social_icons_id
+ * @property int $social_icon_id
  * @property string $name
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property SocialIcon $social_icon
  * @property Collection|Contact[] $contacts
  *
@@ -29,17 +29,17 @@ class ContactType extends Model
 	protected $table = 'contact_types';
 
 	protected $casts = [
-		'social_icons_id' => 'int'
+		'social_icon_id' => 'int'
 	];
 
 	protected $fillable = [
-		'social_icons_id',
+		'social_icon_id',
 		'name'
 	];
 
-	public function social_icon()
+	public function socialIcon()
 	{
-		return $this->belongsTo(SocialIcon::class, 'social_icons_id');
+		return $this->belongsTo(SocialIcon::class);
 	}
 
 	public function contacts()

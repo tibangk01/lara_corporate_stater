@@ -2,10 +2,12 @@
 
 namespace App\View\Components\Guest;
 
+use App\Models\SocialIcon;
 use Illuminate\View\Component;
 
 class TopBar extends Component
 {
+    public $contacts;
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,11 @@ class TopBar extends Component
      */
     public function __construct()
     {
-        //
+        $contacts = SocialIcon::with('contactType')->get();
+
+        dd($contacts);
+
+        $this->contacts ;
     }
 
     /**

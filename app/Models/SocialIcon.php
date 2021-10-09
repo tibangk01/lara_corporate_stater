@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class SocialIcon
- * 
+ *
  * @property int $id
  * @property string $class
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Collection|ContactType[] $contact_types
  *
  * @package App\Models
@@ -30,8 +30,8 @@ class SocialIcon extends Model
 		'class'
 	];
 
-	public function contact_types()
+	public function contactType()
 	{
-		return $this->hasMany(ContactType::class, 'social_icons_id');
+		return $this->hasOne(ContactType::class);
 	}
 }
