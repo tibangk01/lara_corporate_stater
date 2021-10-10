@@ -11,27 +11,27 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SocialIcon
- *
+ * Class MediaType
+ * 
  * @property int $id
- * @property string $class
+ * @property string $name
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
- * @property Collection|ContactType[] $contact_types
+ * 
+ * @property Collection|Media[] $media
  *
  * @package App\Models
  */
-class SocialIcon extends Model
+class MediaType extends Model
 {
-	protected $table = 'social_icons';
+	protected $table = 'media_types';
 
 	protected $fillable = [
-		'class'
+		'name'
 	];
 
-	public function contactType()
+	public function media()
 	{
-		return $this->hasOne(ContactType::class);
+		return $this->hasMany(Media::class);
 	}
 }

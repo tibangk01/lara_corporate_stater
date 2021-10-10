@@ -7,12 +7,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Models\Contact;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class SiteSetting
+ * Class Corporation
  *
  * @property int $id
  * @property string $name
@@ -25,9 +24,9 @@ use Illuminate\Database\Eloquent\Collection;
  *
  * @package App\Models
  */
-class SiteSetting extends Model
+class Corporation extends Model
 {
-	protected $table = 'site_settings';
+	protected $table = 'corporations';
 
 	protected $fillable = [
 		'name',
@@ -37,6 +36,11 @@ class SiteSetting extends Model
 
 	public function contacts()
 	{
-        return $this->morphMany(Contact::class, 'contactable');
+		return $this->hasMany(Contact::class, 'contactable_id');
+	}
+
+    public function medias()
+	{
+		return $this->hasMany(Media::class, 'mediaable_id');
 	}
 }
