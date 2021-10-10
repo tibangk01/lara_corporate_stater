@@ -21,14 +21,17 @@
             @foreach ($sociaLinks as $sociaLink)
 
                 <!-- TODO:return one random element of array -->
-                <a href="{{ $sociaLink->url ?? '#' }}" class="{{ $sociaLink->linkType->icon->class ?? 'facebook' }}">
+                <!-- TODO: navigations links -->
+                <a href="{{ $sociaLink->url ?? '#' }}" class="{{ $sociaLink->linkType->icon->class }}">
 
-                    <i class="bi bi-{{ $sociaLink->linkType->icon->class ?? 'facebook' }}"></i>
+                    <i class="bi bi-{{ $sociaLink->linkType->icon->class  }}"></i>
 
                 </a>
 
             @endforeach
 
         </div>
+
     </div>
+
 </section>

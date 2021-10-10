@@ -28,7 +28,8 @@ class Icon extends Model
 	protected $table = 'icons';
 
 	protected $fillable = [
-		'class'
+		'class',
+        'is_extended'
 	];
 
 	public function contactType()
@@ -40,4 +41,5 @@ class Icon extends Model
 	{
 		return $this->hasOne(LinkType::class);
 	}
+
 }

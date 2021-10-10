@@ -27,6 +27,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Contact extends Model
 {
+
+    //TODO: refactore contacts
+    
 	protected $table = 'contacts';
 
 	protected $casts = [

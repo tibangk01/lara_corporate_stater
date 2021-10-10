@@ -14,6 +14,7 @@
 
     <meta content="{{ setting('site.description') }}" name="description">
 
+    <!-- TODO: page titles -->
     <title>{{ ' | ' . config('app.name') }}</title>
 
     <!-- Favicons -->
