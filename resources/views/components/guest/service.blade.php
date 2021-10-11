@@ -21,6 +21,7 @@
                              <div class="icon"><i
                                      class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
                              </div>
+                             <!-- TODO: service route-->
                              <h4><a href="">{{ $item->iconableItem->title }}</a></h4>
                              <p>{{ $item->iconableItem->value }}</p>
                          </div>

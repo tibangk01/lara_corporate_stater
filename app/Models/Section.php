@@ -40,13 +40,27 @@ class Section extends Model
         'description'
 	];
 
+    //TODO: comment db tables
+
+    //Change iconable_item.value -> description + refactore code
+
 	public function sitePage()
 	{
 		return $this->belongsTo(SitePage::class);
 	}
 
+    public function media()
+	{
+		return $this->hasOne(Media::class, 'mediaable_id');
+	}
+
 	public function items()
 	{
 		return $this->hasMany(Item::class);
+	}
+
+    public function description()
+	{
+		return $this->hasOne(Description::class, 'descriptionable_id');
 	}
 }
