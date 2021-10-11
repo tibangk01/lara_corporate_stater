@@ -8,11 +8,15 @@
 
         <x-guest.about/>
 
-        <x-guest.service/>
-
         <x-guest.skill/>
 
         <x-guest.count/>
+
+        <x-guest.client/>
+
+        <x-guest.service/>
+
+        <x-guest.testimonial/>
 
     </x-guest.main>
 
