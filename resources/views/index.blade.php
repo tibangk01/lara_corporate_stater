@@ -22,6 +22,8 @@
 
         <x-guest.team/>
 
+        <x-guest.pricing/>
+
     </x-guest.main>
 
 </x-guest.layout>
