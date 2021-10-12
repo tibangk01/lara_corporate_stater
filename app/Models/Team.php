@@ -11,30 +11,28 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SitePage
- *
+ * Class Team
+ * 
  * @property int $id
  * @property int $corporation_id
- * @property string $name
  * @property Carbon $created_at
  * @property Carbon $updated_at
- *
+ * 
  * @property Corporation $corporation
- * @property Collection|Section[] $sections
+ * @property Collection|Employee[] $employees
  *
  * @package App\Models
  */
-class SitePage extends Model
+class Team extends Model
 {
-	protected $table = 'site_pages';
+	protected $table = 'teams';
 
 	protected $casts = [
 		'corporation_id' => 'int'
 	];
 
 	protected $fillable = [
-		'corporation_id',
-		'name'
+		'corporation_id'
 	];
 
 	public function corporation()
@@ -42,8 +40,8 @@ class SitePage extends Model
 		return $this->belongsTo(Corporation::class);
 	}
 
-	public function section()
+	public function employees()
 	{
-		return $this->hasOne(Section::class);
+		return $this->hasMany(Employee::class);
 	}
 }

@@ -20,6 +20,8 @@
 
         <x-guest.portfolio/>
 
+        <x-guest.team/>
+
     </x-guest.main>
 
 </x-guest.layout>

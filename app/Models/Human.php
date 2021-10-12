@@ -47,7 +47,7 @@ class Human extends Model
 		'last_name'
 	];
 
-    public function setFullNameAttribute()
+    public function getFullNameAttribute()
     {
         return ucfirst($this->first_name).' '.ucfirst($this->last_name);
     }
@@ -71,4 +71,10 @@ class Human extends Model
 	{
 		return $this->hasMany(Buyer::class);
 	}
+
+    /** Morphs */
+    public function links()
+    {
+        return $this->hasMany(Link::class, 'linkable_id');
+    }
 }
