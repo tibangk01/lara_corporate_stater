@@ -14,34 +14,27 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $contact_type_id
- * @property int $contactable_id
- * @property string $contactable_type
- * @property string $value
+ * @property int $iconable_item_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
  * @property ContactType $contact_type
- * @property SiteSetting $site_setting
+ * @property IconableItem $iconable_item
  *
  * @package App\Models
  */
 class Contact extends Model
 {
-
-    //TODO: refactore contacts
-    
 	protected $table = 'contacts';
 
 	protected $casts = [
 		'contact_type_id' => 'int',
-		'contactable_id' => 'int'
+		'iconable_item_id' => 'int'
 	];
 
 	protected $fillable = [
 		'contact_type_id',
-		'contactable_id',
-		'contactable_type',
-		'value'
+		'iconable_item_id'
 	];
 
 	public function contactType()
@@ -49,8 +42,8 @@ class Contact extends Model
 		return $this->belongsTo(ContactType::class);
 	}
 
-    public function contactable()
-    {
-        return $this->morphTo();
-    }
+	public function iconableItem()
+	{
+		return $this->belongsTo(IconableItem::class);
+	}
 }

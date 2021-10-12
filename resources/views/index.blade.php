@@ -24,6 +24,10 @@
 
         <x-guest.pricing/>
 
+        <x-guest.faq/>
+
+        <x-guest.contact/>
+
     </x-guest.main>
 
 </x-guest.layout>

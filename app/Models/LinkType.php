@@ -46,4 +46,10 @@ class LinkType extends Model
 	{
         return $this->morphMany(Link::class, 'linkable');
 	}
+
+    public function link()
+	{
+        return $this->morphOne(Link::class, 'linkable');
+	}
+
 }

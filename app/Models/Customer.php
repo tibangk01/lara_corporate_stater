@@ -12,13 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Customer
- * 
+ *
  * @property int $id
  * @property int $corporation_id
  * @property int $customer_type_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Corporation $corporation
  * @property CustomerType $customer_type
  * @property Collection|Enterprise[] $enterprises
@@ -44,7 +44,7 @@ class Customer extends Model
 		return $this->belongsTo(Corporation::class);
 	}
 
-	public function customer_type()
+	public function customerType()
 	{
 		return $this->belongsTo(CustomerType::class);
 	}

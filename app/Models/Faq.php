@@ -11,13 +11,13 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Faq
- * 
+ *
  * @property int $id
  * @property int $item_id
  * @property string $slugable
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Item $item
  *
  * @package App\Models
@@ -39,4 +39,9 @@ class Faq extends Model
 	{
 		return $this->belongsTo(Item::class);
 	}
+
+    public function description()
+    {
+        return $this->hasOne(Description::class, 'descriptionable_id');
+    }
 }

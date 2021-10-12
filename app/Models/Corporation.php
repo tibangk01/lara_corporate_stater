@@ -7,8 +7,8 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Corporation
@@ -20,7 +20,10 @@ use Illuminate\Database\Eloquent\Collection;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
- * @property Collection|Contact[] $contacts
+ * @property Collection|Customer[] $customers
+ * @property Collection|Human[] $humans
+ * @property Collection|SitePage[] $site_pages
+ * @property Collection|Team[] $teams
  *
  * @package App\Models
  */
@@ -34,7 +37,27 @@ class Corporation extends Model
 		'slogan'
 	];
 
-	public function contacts()
+	public function customers()
+	{
+		return $this->hasMany(Customer::class);
+	}
+
+	public function humans()
+	{
+		return $this->hasMany(Human::class);
+	}
+
+	public function site_pages()
+	{
+		return $this->hasMany(SitePage::class);
+	}
+
+	public function teams()
+	{
+		return $this->hasMany(Team::class);
+	}
+
+    public function contacts()
 	{
 		return $this->hasMany(Contact::class, 'contactable_id');
 	}
@@ -43,4 +66,9 @@ class Corporation extends Model
 	{
 		return $this->hasMany(Media::class, 'mediaable_id');
 	}
+
+    public function links()
+    {
+        return $this->hasMany(Link::class, 'linkable_id');
+    }
 }

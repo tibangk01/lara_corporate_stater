@@ -44,7 +44,7 @@ class Item extends Model
 		return $this->belongsTo(Section::class);
 	}
 
-	public function item_type()
+	public function itemType()
 	{
 		return $this->belongsTo(ItemType::class);
 	}
