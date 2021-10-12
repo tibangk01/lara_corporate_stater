@@ -52,7 +52,7 @@
 
                                 <a href="{{ asset('storage') . '/' . $project->media->link }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ $project->description->title }}"><i class="bx bx-plus"></i></a>
 
-                                <a href="{{ route('portfolio') }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                                <a href="{{ route('portfolio', ['id' => $project->id]) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
 
                             </div>
 

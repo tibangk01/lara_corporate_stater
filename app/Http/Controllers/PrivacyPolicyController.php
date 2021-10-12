@@ -10,4 +10,6 @@ class PrivacyPolicyController extends Controller
     {
         return view('pages.privacy-policy');
     }
+
+    //TODO: design the db schema img
 }
