@@ -18,6 +18,8 @@
 
         <x-guest.testimonial/>
 
+        <x-guest.portfolio/>
+
     </x-guest.main>
 
 </x-guest.layout>

@@ -47,12 +47,12 @@ class Media extends Model
         return $this->morphTo();
     }
 
-	public function media_type()
+	public function mediaType()
 	{
 		return $this->belongsTo(MediaType::class);
 	}
 
-	public function media_category()
+	public function mediaCategory()
 	{
 		return $this->belongsTo(MediaCategory::class);
 	}
