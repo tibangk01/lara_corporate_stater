@@ -17,7 +17,7 @@ class Contact extends Component
 
     public $contacts;
 
-    public $geolocalizationLink;
+    public $link;
 
     public function __construct()
     {
@@ -36,7 +36,12 @@ class Contact extends Component
          * linkType.name = 'Geolocalization url',
          */
 
-        $this->geolocalizationLink = "geolocalizationLink";
+        //TODO: get inverse of this query with the same result + unicity constraint on site page name column
+        $link = LinkType::with('links')
+            ->where('name', 'Geolocalization url')
+            ->get()[0];
+
+        $this->link = $link;
     }
 
     public function render()
