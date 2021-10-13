@@ -1,3 +1,17 @@
-<div>
-    <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
-</div>
+<span>
+
+    @if ($errors->any())
+
+        <ul>
+
+            @foreach ($errors->all() as $error)
+
+                <li class="text-danger">{{ $error }}</li>
+
+            @endforeach
+            
+        </ul>
+
+    @endif
+
+</span>
