@@ -12,15 +12,15 @@
 
         <x-guest.count/>
 
-        <x-guest.client/>
+        {{-- <x-guest.client/> --}}
 
         <x-guest.service/>
 
-        <x-guest.testimonial/>
+        {{-- <x-guest.testimonial/> --}}
 
-        <x-guest.portfolio/>
+        {{-- <x-guest.portfolio/> --}}
 
-        <x-guest.team/>
+        {{-- <x-guest.team/> --}}
 
         <x-guest.pricing/>
 

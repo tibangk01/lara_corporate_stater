@@ -2,36 +2,39 @@
 
     <div class="container d-flex justify-content-center justify-content-md-between">
 
-        {{-- <div class="contact-info d-flex align-items-center">
+        <div class="contact-info d-flex align-items-center">
 
+            @if ($contactTypes)
 
-            @foreach ($contacts as $contact)
+                @foreach ($contactTypes as $contactType)
 
-                <i class="bi bi-{{ $contact->contactType->icon->class }} d-flex align-items-center {{ $loop->last ? 'ms-4' : '' }}">
+                    <i
+                        class="bi bi-{{ $contactType->icon->class }} d-flex align-items-center {{ $loop->last ? 'ms-4' : '' }}">
 
-                    <span>{{ $contact->value }}</span>
+                        <span>{{ $contactType->contacts[0]->value }}</span>
 
-                </i>
+                    </i>
 
-            @endforeach
+                @endforeach
 
-        </div> --}}
+            @endif
 
-        {{-- <div class="social-links d-none d-md-flex align-items-center">
+        </div>
 
-            @foreach ($sociaLinks as $sociaLink)
+        <div class="social-links d-none d-md-flex align-items-center">
 
-                <!-- TODO:return one random element of array -->
+            @foreach ($linkTypes as $linkType)
+
                 <!-- TODO: navigations links -->
-                <a href="{{ $sociaLink->url ?? '#' }}" class="{{ $sociaLink->linkType->icon->class }}">
+                <a href="{{ $linkType->links[0]->url ?? '#' }}" class="{{ $linkType->icon->class }}">
 
-                    <i class="bi bi-{{ $sociaLink->linkType->icon->class  }}"></i>
+                    <i class="bi bi-{{ $linkType->icon->class }}"></i>
 
                 </a>
 
             @endforeach
 
-        </div> --}}
+        </div>
 
     </div>
 

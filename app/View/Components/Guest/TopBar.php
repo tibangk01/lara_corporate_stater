@@ -2,33 +2,27 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Link;
-use App\Models\Contact;
+use App\Models\LinkType;
 use App\Models\ContactType;
-use App\Models\SiteSetting;
 use Illuminate\View\Component;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class TopBar extends Component
 {
-    public $contacts;
+    public $contactTypes;
 
-    public $sociaLinks;
+    public $linkTypes;
 
     public function __construct()
     {
-        //TODO: query by email & phone
-        $contacts = Contact::with('contactType.icon')->get();
+        $this->contactTypes = ContactType::where(function ($query) {
+            $query->whereIn('name', ['Email', 'Phone']);
+        })->with(['contacts', 'icon'])->get();
 
-        //TODO: query using join to constraint for linkedin; facebook, twitter, instagram
-        $sociaLinks = Link::with('linkType.icon')
-            ->whereIn('link_type_id', [1, 2, 3, 4])
-            ->get()
-            ->shuffle();
-
-        $this->contacts = $contacts;
-
-        $this->sociaLinks = $sociaLinks;
+        $this->linkTypes = LinkType::whereIn('name', [
+            'Facebook', 'Twitter', 'Instagram', 'Linkedin'
+        ])->with(['icon', 'links' => function ($query) {
+            $query->where('linkable_type', 'like', '%Corporation');
+        }])->get()->shuffle();
     }
 
     public function render()

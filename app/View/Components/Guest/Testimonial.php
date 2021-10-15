@@ -18,9 +18,9 @@ class Testimonial extends Component
          * human.last_name,
          * function.name,
          */
-        $buyers = Buyer::with('human.work')->get();
+        // $buyers = Buyer::with('human.work')->get();
 
-        $this->buyers = $buyers;
+        // $this->buyers = $buyers;
     }
 
     public function render()

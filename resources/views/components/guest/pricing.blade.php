@@ -20,7 +20,13 @@
 
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
 
-                        <div class="box">
+                        <div class="box {{ $pricing->is_featured ? 'featured' : '' }}">
+
+                            @if ($pricing->is_advanced)
+
+                                <span class="advanced">Advanced</span>
+
+                            @endif
 
                             <h3>{{ $pricing->title }}</h3>
 

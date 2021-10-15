@@ -11,8 +11,8 @@ class Navigation extends Component
 
     public function __construct()
     {
-        $corporation = Corporation::first()->get(['name'])[0];
-        
+        $corporation = Corporation::latest()->get(['name'])[0];
+
         $this->corporation = $corporation;
     }
 

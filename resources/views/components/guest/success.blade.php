@@ -1,9 +1,11 @@
 @if ($message = Session::get('success'))
 
-    <span class="text-danger">
+    <span class="sent-message">
 
         {{ $message }}
 
+        //TODO : success message : Your message has been sent. Thank you!
+
     </span>
-    
+
 @endif

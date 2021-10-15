@@ -57,11 +57,6 @@ class Corporation extends Model
 		return $this->hasMany(Team::class);
 	}
 
-    public function contacts()
-	{
-		return $this->hasMany(Contact::class, 'contactable_id');
-	}
-
     public function medias()
 	{
 		return $this->hasMany(Media::class, 'mediaable_id');
@@ -70,5 +65,10 @@ class Corporation extends Model
     public function links()
     {
         return $this->hasMany(Link::class, 'linkable_id');
+    }
+
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class, 'contactable');
     }
 }

@@ -5,7 +5,7 @@
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
 
             <div class="swiper-wrapper">
-
+{{-- 
                 @if ($buyers)
 
                 @foreach ($buyers as $buyer)
@@ -34,7 +34,7 @@
                         </div>
                         @endforeach
 
-                    @endif
+                    @endif --}}
                     <!-- TODO: indent code -->
 
                 </div>

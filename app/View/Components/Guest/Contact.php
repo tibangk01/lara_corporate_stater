@@ -3,45 +3,55 @@
 namespace App\View\Components\Guest;
 
 use App\Models\Link;
+use App\Models\Team;
 use App\Models\LinkType;
 use App\Models\SitePage;
+use App\Models\ContactType;
 use App\Models\Corporation;
 use Illuminate\View\Component;
 use App\Models\Contact as ContactModel;
-use App\Models\Team;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Contact extends Component
 {
     public $sitePage;
 
-    public $contacts;
+    public $contactTypes;
 
-    public $link;
+    public $linkType;
+
 
     public function __construct()
     {
-        $sitePage = SitePage::with(['section'])
-            ->where('name', 'Contact')
-            ->get()[0];
-        $this->sitePage = $sitePage;
 
-        $contacts = ContactModel::with(['contactType', 'iconableItem.icon'])
-            ->get()
-            ->shuffle();
-        $this->contacts = $contacts;
+        $this->linkType = LinkType::where('name', 'Geolocalization url')
+        ->with(['links' => function($query){
+            $query->where('linkable_type', 'like', '%');
+        }])->get()[0];
+
 
         /**
-         * link.url,
-         * linkType.name = 'Geolocalization url',
+         * section.[name, title, description],
+         *
+         *  contactType[name]
+         * contact[value]
+         * description[tilte]
          */
 
-        //TODO: get inverse of this query with the same result + unicity constraint on site page name column
-        $link = LinkType::with('links')
-            ->where('name', 'Geolocalization url')
-            ->get()[0];
+        $this->contactTypes = ContactType::where(function ($query) {
+            $query->whereIn('name', ['Email', 'Phone', 'Address']);
+        })->with(['icon', 'contacts' => function($query){
+            $query->with(['description' => function($query){
+                $query->where('descriptionable_type', 'like', '%Contact');
+            } ]);
+        }])->get()->shuffle();
 
-        $this->link = $link;
+
+        $this->sitePage = SitePage::where('name', 'Contact')
+        ->with(['section'])->get()[0];
+
+        //TODO: get inverse of this query with the same result + unicity constraint on site page name column
+
     }
 
     public function render()

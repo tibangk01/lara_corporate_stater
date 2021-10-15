@@ -14,12 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $contact_type_id
- * @property int $iconable_item_id
+ * @property int $contactable_id
+ * @property string $contactable_type
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
  * @property ContactType $contact_type
- * @property IconableItem $iconable_item
  *
  * @package App\Models
  */
@@ -29,21 +29,28 @@ class Contact extends Model
 
 	protected $casts = [
 		'contact_type_id' => 'int',
-		'iconable_item_id' => 'int'
+		'contactable_id' => 'int'
 	];
 
 	protected $fillable = [
 		'contact_type_id',
-		'iconable_item_id'
+		'contactable_id',
+		'contactable_type',
+        'value'
 	];
+
+    public function contactable()
+    {
+        return $this->morphTo();
+    }
 
 	public function contactType()
 	{
 		return $this->belongsTo(ContactType::class);
 	}
 
-	public function iconableItem()
-	{
-		return $this->belongsTo(IconableItem::class);
-	}
+    public function description()
+    {
+        return $this->hasOne(Description::class, 'descriptionable_id');
+    }
 }

@@ -1,17 +1,13 @@
-<span>
+@if ($errors->any())
 
-    @if ($errors->any())
+    <ul>
 
-        <ul>
+        @foreach ($errors->all() as $error)
 
-            @foreach ($errors->all() as $error)
+            <li class="error-message">{{ $error }}</li>
 
-                <li class="text-danger">{{ $error }}</li>
+        @endforeach
 
-            @endforeach
-            
-        </ul>
+    </ul>
 
-    @endif
-
-</span>
+@endif

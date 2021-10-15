@@ -7,19 +7,19 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ContactType
  *
  * @property int $id
- * @property int $social_icon_id
+ * @property int $icon_id
  * @property string $name
  * @property Carbon $created_at
  * @property Carbon $updated_at
  *
- * @property SocialIcon $social_icon
+ * @property Icon $icon
  * @property Collection|Contact[] $contacts
  *
  * @package App\Models
@@ -29,11 +29,11 @@ class ContactType extends Model
 	protected $table = 'contact_types';
 
 	protected $casts = [
-		'social_icon_id' => 'int'
+		'icon_id' => 'int'
 	];
 
 	protected $fillable = [
-		'social_icon_id',
+		'icon_id',
 		'name'
 	];
 
@@ -46,4 +46,5 @@ class ContactType extends Model
 	{
 		return $this->hasMany(Contact::class);
 	}
+    
 }

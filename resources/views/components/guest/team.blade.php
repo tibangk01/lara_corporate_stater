@@ -15,7 +15,7 @@
 
         <div class="row">
 
-
+{{-- 
             @if ($employees)
 
             @foreach ($employees as $employee)
@@ -47,7 +47,7 @@
             </div>
                 @endforeach
 
-                @endif
+                @endif --}}
 
 
         </div>
