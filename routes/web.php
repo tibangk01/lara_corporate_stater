@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PrivacyPolicyController;
@@ -28,6 +29,8 @@ Route::get('service', ServiceController::class)->name('service');
 Route::get('team', TeamController::class)->name('team');
 
 Route::post('visitor-request', VisitorRequestController::class)->name('visitor_request');
+
+Route::post('newsletter', NewsletterController::class)->name('newsletter');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

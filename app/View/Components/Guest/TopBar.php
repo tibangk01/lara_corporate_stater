@@ -2,8 +2,14 @@
 
 namespace App\View\Components\Guest;
 
+use App\Models\Contact;
+use App\Models\Human;
 use App\Models\LinkType;
+use App\Models\HumanType;
 use App\Models\ContactType;
+use App\Models\Corporation;
+use App\Models\Questioning;
+use App\Models\Visitor;
 use Illuminate\View\Component;
 
 class TopBar extends Component
@@ -14,6 +20,8 @@ class TopBar extends Component
 
     public function __construct()
     {
+        // Clean namespaces
+
         $this->contactTypes = ContactType::where(function ($query) {
             $query->whereIn('name', ['Email', 'Phone']);
         })->with(['contacts', 'icon'])->get();
@@ -23,6 +31,7 @@ class TopBar extends Component
         ])->with(['icon', 'links' => function ($query) {
             $query->where('linkable_type', 'like', '%Corporation');
         }])->get()->shuffle();
+
     }
 
     public function render()

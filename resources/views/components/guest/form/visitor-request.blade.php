@@ -50,9 +50,7 @@
 
         </div>
 
-        <div class="my-3" id="success">
-            {{-- <div class="loading d-block">Loading</div> --}}
-          </div>
+        <div class="my-3" id="message"></div>
 
         <div class="text-center"><button type="submit">Send Message</button></div>
 
