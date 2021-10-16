@@ -47,7 +47,7 @@ class Corporation extends Model
 		return $this->hasMany(Human::class);
 	}
 
-	public function site_pages()
+	public function sitePages()
 	{
 		return $this->hasMany(SitePage::class);
 	}
@@ -70,5 +70,10 @@ class Corporation extends Model
     public function contacts()
     {
         return $this->morphMany(Contact::class, 'contactable');
+    }
+
+    public function logo()
+    {
+        return $this->morphOne(Logo::class, 'logoable');
     }
 }
