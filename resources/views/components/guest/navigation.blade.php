@@ -13,53 +13,53 @@
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'home' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#hero' : route('home') }}">{{ __('Home') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('home') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#hero' : route('home') }}">{{ __('Home') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'about' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#about' : route('about') }}">{{ __('About') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('about') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#about' : route('about') }}">{{ __('About') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'service' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#services' : route('service') }}">{{ __('Services') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('service') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#services' : route('service') }}">{{ __('Services') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'portfolio' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#portfolio' : route('portfolio') }}">{{ __('Portfolio') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('portfolio') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#portfolio' : route('portfolio') }}">{{ __('Portfolio') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'team' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#team' : route('team') }}">{{ __('Team') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('team') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#team' : route('team') }}">{{ __('Team') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'faq' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#faq' : route('faq') }}">{{ __('F.A.Q') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('faq') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#faq' : route('faq') }}">{{ __('F.A.Q') }}</a>
 
                 </li>
 
-                @if (request()->route()->getName() == 'privacy_policy')
+                @if (request()->route()->named('privacy_policy'))
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'privacy_policy' ? 'active' : ''}}" href="{{ route('privacy_policy') }}">{{ __('Privacy & Policy') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('privacy_policy') ? 'active' : ''}}" href="{{ route('privacy_policy') }}">{{ __('Privacy & Policy') }}</a>
 
                 </li>
 
                 @endif
-                
+
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->getName() == 'contact' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#contact' : route('contact') }}">{{ __('Contact') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('contact') ? 'active' : ''}}" href="{{  request()->route()->named('home') ? '#contact' : route('contact') }}">{{ __('Contact') }}</a>
 
                 </li>
 
