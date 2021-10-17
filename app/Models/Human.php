@@ -55,7 +55,7 @@ class Human extends Model
         return $this->morphMany(Link::class, 'linkable');
     }
 
-	public function human_type()
+	public function humanType()
 	{
 		return $this->belongsTo(HumanType::class);
 	}

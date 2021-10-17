@@ -2,41 +2,44 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Employee;
 use App\Models\Human;
 use App\Models\Section;
+use App\Models\Employee;
 use App\Models\SitePage;
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class Team extends Component
 {
-    /**
-     * employee.profile,
-     * human.fullName,
-     * function.name,
-     * links.url,
-     * icons.class,
-     */
     public $employees;
 
     public $sitePage;
 
+    public $section;
+
     public function __construct()
     {
-        $sitePage = SitePage::with(['section'])
-            ->where('name', 'Team')->get()[0];
-        $this->sitePage = $sitePage;
-
-        // $section = Section::with(['sitePage'])->get()->dd();
-        //TODO: eager load with multiple constraint on child
-
-        $employees = Employee::with(['human.work'])
-            ->with(['human.links' => function ($query) {
-                $query->with(['linkType.icon'])
-                    ->where('linkable_type', 'like', '%Human');
-            }])->get();
-
-        $this->employees = $employees;
+        $this->section = Section::whereName('team')
+            ->with(['items' => function ($query) {
+                $query->select('id', 'section_id')
+                    ->with(['employee' => function ($query) {
+                        $query->select('id', 'item_id', 'official_id', 'profile')
+                            ->with(['official' => function ($query) {
+                                $query->select('id', 'work_id', 'human_id')
+                                    ->with(['work:id,name', 'human' => function ($query) {
+                                        $query->select('id', 'first_name', 'last_name')
+                                            ->with(['links' => function ($query) {
+                                                $query->select('id', 'link_type_id', 'linkable_id', 'url')
+                                                    ->with(['linkType' => function($query){
+                                                        $query->select('id','icon_id')
+                                                            ->with(['icon:id,class']);
+                                                    }]);
+                                            }]);
+                                    }]);
+                            }]);
+                    }]);
+            }])->get()->first();
+            //->get(['id', 'name', 'title', 'description'])
     }
 
 

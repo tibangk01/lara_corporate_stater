@@ -14,7 +14,7 @@ class Portfolio extends Component
 
     public function __construct()
     {
-        $this->section = Section::where('name', 'portfolio')
+        $this->section = Section::whereName('portfolio')
             ->with(['items' => function ($query) {
                 $query->select(['id', 'section_id'])
                     ->with(['projects' => function ($query) {

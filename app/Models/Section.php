@@ -27,40 +27,37 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Section extends Model
 {
-	protected $table = 'sections';
+    protected $table = 'sections';
 
-	protected $casts = [
-		'site_page_id' => 'int'
-	];
+    protected $casts = [
+        'site_page_id' => 'int'
+    ];
 
-	protected $fillable = [
-		'site_page_id',
-		'name',
-		'title',
+    protected $fillable = [
+        'site_page_id',
+        'name',
+        'title',
         'description'
-	];
+    ];
 
     //TODO: comment db tables
+    public function descriptionable()
+    {
+        return $this->morphOne(Description::class, 'descriptionable');
+    }
 
-    //Change iconable_item.value -> description + refactore code
-
-	public function sitePage()
-	{
-		return $this->belongsTo(SitePage::class);
-	}
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 
     public function media()
-	{
-		return $this->hasOne(Media::class, 'mediaable_id');
-	}
+    {
+        return $this->morphOne(Media::class, 'mediaable');
+    }
 
-	public function items()
-	{
-		return $this->hasMany(Item::class);
-	}
-
-    public function description()
-	{
-		return $this->hasOne(Description::class, 'descriptionable_id');
-	}
+    public function sitePage()
+    {
+        return $this->belongsTo(SitePage::class);
+    }
 }

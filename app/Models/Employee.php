@@ -58,9 +58,14 @@ class Employee extends Model
 		return $this->belongsTo(Team::class);
 	}
 
+    public function official()
+	{
+		return $this->belongsTo(Official::class);
+	}
+
     /** Morphs **/
-    // public function links()
-    // {
-    //     return $this->hasMany(Link::class, 'linkable_id');
-    // }
+    public function links()
+    {
+        return $this->morphMany(Link::class, 'linkable');
+    }
 }

@@ -1,56 +1,57 @@
-<section id="team" class="team section-bg">
+@if ($section)
 
-    <div class="container" data-aos="fade-up">
+    <section id="team" class="team section-bg">
 
-        <div class="section-title">
+        <div class="container" data-aos="fade-up">
 
-            <h2>{{ $sitePage->section->title }}</h2>
+            <div class="section-title">
+
+                <h2>{{ $section->title }}</h2>
 
 
-            <h3>{{ __('Our Hardworking') }} <span>{{ $sitePage->section->name }}</span></h3>
+                <h3>{{ __('Our Hardworking') }} <span>{{ $section->name }}</span></h3>
 
-            <p>{{  $sitePage->section->description}}</p>
-
-        </div>
-
-        <div class="row">
-
-{{-- 
-            @if ($employees)
-
-            @foreach ($employees as $employee)
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="member">
-
-                    <div class="member-img">
-                        <img src="{{ asset('storage').'/'.$employee->profile }}" class="img-fluid" alt="profile">
-
-                        @if ($employee->human->links)
-
-                        <div class="social">
-                        @foreach ($employee->human->links as $link)
-
-                            <a href="{{ $link->url }}"><i class="bi bi-{{ $link->linkType->icon->class }}"></i></a>
-                            @endforeach
-
-                        </div>
-                            @endif
-                    </div>
-
-                    <div class="member-info">
-                        <h4>{{ $employee->human->full_name }}</h4>
-                        <span>{{ $employee->human->work->name }}</span>
-                    </div>
-                </div>
+                <p>{{ $section->description }}</p>
 
             </div>
+
+            <div class="row">
+
+                @foreach ($section->items as $item)
+
+                    <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+
+                        <div class="member">
+
+                            <div class="member-img">
+                                <img src="{{ asset('storage') . '/' . $item->employee->profile }}" class="img-fluid"
+                                    alt="profile">
+
+                                <div class="social">
+                                    @foreach ($item->employee->official->human->links as $link)
+
+                                        <a href="{{ $link->url }}"><i
+                                                class="bi bi-{{ $link->linkType->icon->class }}"></i></a>
+
+                                    @endforeach
+                                </div>
+
+                            </div>
+
+                            <div class="member-info">
+                                <h4>{{ $item->employee->official->human->full_name }}</h4>
+                                <span>{{ $item->employee->official->work->name }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
                 @endforeach
 
-                @endif --}}
 
+            </div>
 
         </div>
+    </section>
 
-    </div>
-</section>
+@endif

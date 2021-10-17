@@ -1,10 +1,10 @@
-<section id="skills" class="skills">
+@if ($skills)
 
-    <div class="container" data-aos="fade-up">
+    <section id="skills" class="skills">
 
-        <div class="row skills-content">
+        <div class="container" data-aos="fade-up">
 
-            @if ($skills)
+            <div class="row skills-content">
 
                 @foreach ($skills as $skill)
 
@@ -20,7 +20,8 @@
 
                             <div class="progress-bar-wrap">
 
-                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->value }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $skill->value }}"
+                                    aria-valuemin="0" aria-valuemax="100"></div>
 
                             </div>
 
@@ -30,11 +31,10 @@
 
                 @endforeach
 
-            @endif
+            </div>
 
         </div>
 
-    </div>
-    
-</section>
+    </section>
 
+@endif

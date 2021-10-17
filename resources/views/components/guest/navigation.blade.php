@@ -2,7 +2,6 @@
 
     <div class="container d-flex align-items-center justify-content-between">
 
-        <!-- TODO:brand, logo images, indent code -->
         <h1 class="logo"><a href="/">{{ $corporation->name }}<span>.</span></a></h1>
 
         <!-- Uncomment below if you prefer to use an image logo -->
@@ -14,43 +13,37 @@
 
                 <li>
 
-                    <a class="nav-link scrollto active" href="#hero">{{ __('Home') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'home' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#hero' : route('home') }}">{{ __('Home') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto" href="#about">{{ __('About') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'about' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#about' : route('about') }}">{{ __('About') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto" href="#service">{{ __('Services') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'service' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#services' : route('service') }}">{{ __('Services') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto" href="#portfolio">{{ __('Portfolio') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'portfolio' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#portfolio' : route('portfolio') }}">{{ __('Portfolio') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto" href="#team">{{ __('Team') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'team' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#team' : route('team') }}">{{ __('Team') }}</a>
 
                 </li>
 
                 <li>
 
-                    <a class="nav-link scrollto" href="#faq">{{ __('F.A.Q') }}</a>
-
-                </li>
-
-                <li>
-
-                    <a class="nav-link scrollto" href="#contact">{{ __('Contact') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'faq' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#faq' : route('faq') }}">{{ __('F.A.Q') }}</a>
 
                 </li>
 
@@ -63,6 +56,13 @@
                 </li>
 
                 @endif
+                
+                <li>
+
+                    <a class="nav-link scrollto {{ request()->route()->getName() == 'contact' ? 'active' : ''}}" href="{{  request()->route()->getName() == 'home' ? '#contact' : route('contact') }}">{{ __('Contact') }}</a>
+
+                </li>
+
 
             </ul>
 

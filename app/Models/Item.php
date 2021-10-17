@@ -61,9 +61,9 @@ class Item extends Model
 		return $this->hasMany(Client::class);
 	}
 
-	public function employees()
+	public function employee()
 	{
-		return $this->hasMany(Employee::class);
+		return $this->hasOne(Employee::class);
 	}
 
 	public function enterprises()

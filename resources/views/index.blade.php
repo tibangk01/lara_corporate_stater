@@ -20,7 +20,7 @@
 
         <x-guest.portfolio/>
 
-        {{-- <x-guest.team/> --}}
+        <x-guest.team/>
 
         <x-guest.pricing/>
 
