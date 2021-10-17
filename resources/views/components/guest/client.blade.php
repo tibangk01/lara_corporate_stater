@@ -3,7 +3,7 @@
     <div class="container" data-aos="zoom-in">
 
         <div class="row">
-{{-- 
+
             @if ($enterprises)
 
                 @foreach ($enterprises as $enterprise)
@@ -16,7 +16,7 @@
 
                 @endforeach
 
-            @endif --}}
+            @endif
 
         </div>
 

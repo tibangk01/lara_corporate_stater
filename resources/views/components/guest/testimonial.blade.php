@@ -1,29 +1,32 @@
-<section id="testimonials" class="testimonials">
+@if ($humanType && $mediaCategory)
 
-    <div class="container" data-aos="zoom-in">
-<!-- TODO: testimonial bg image -->
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+    <section id="testimonials" class="testimonials"
+        style="background: url({{ asset('storage') . '/' . $mediaCategory->media[0]->link }})">
 
-            <div class="swiper-wrapper">
-{{-- 
-                @if ($buyers)
+        <div class="container" data-aos="zoom-in">
 
-                @foreach ($buyers as $buyer)
-                <div class="swiper-slide">
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="swiper-wrapper">
+
+                    @foreach ($humanType->humans as $human)
+
+                        <div class="swiper-slide">
 
                             <div class="testimonial-item">
 
-                                <img src="{{ asset('storage').'/'.$buyer->avatar }}" class="testimonial-img" alt="avatar">
+                                <img src="{{ asset('storage') . '/' . $human->officials[0]->clients[0]->avatar }}"
+                                    class="testimonial-img" alt="">
 
-                                <h3>{{ $buyer->human->full_name }}</h3>
+                                <h3>{{ $human->full_name }}</h3>
 
-                                <h4>{{ $buyer->human->work->name }}</h4>
+                                <h4>{{ $human->officials[0]->work->name }}</h4>
 
                                 <p>
 
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
 
-                                    {{ $buyer->message }}
+                                    {{ $human->officials[0]->clients[0]->message }}
 
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
 
@@ -32,14 +35,15 @@
                             </div>
 
                         </div>
-                        @endforeach
 
-                    @endif --}}
-                    <!-- TODO: indent code -->
+                    @endforeach
 
                 </div>
+
                 <div class="swiper-pagination"></div>
 
-        </div>
+            </div>
 
-</section>
+    </section>
+
+@endif

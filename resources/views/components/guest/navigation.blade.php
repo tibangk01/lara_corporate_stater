@@ -8,7 +8,6 @@
         <!-- Uncomment below if you prefer to use an image logo -->
         {{-- <a href="/" class="logo"><img src="{{ asset('storage').'/'. $linkType->logos[0]->link }}" alt=""></a> --}}
 
-
         <nav id="navbar" class="navbar">
 
             <ul>
@@ -69,8 +68,8 @@
 
             <i class="bi bi-list mobile-nav-toggle"></i>
 
-        </nav><!-- .navbar -->
+        </nav>
 
     </div>
 
-</header><!-- End Header -->
+</header>

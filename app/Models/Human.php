@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $human_type_id
- * @property int $work_id
  * @property int $corporation_id
  * @property string $first_name
  * @property string $last_name
@@ -24,8 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property HumanType $human_type
  * @property Corporation $corporation
- * @property Work $work
- * @property Collection|Buyer[] $buyers
+ * @property Collection|Official[] $officials
+ * @property Collection|Visitor[] $visitors
  *
  * @package App\Models
  */
@@ -35,13 +34,11 @@ class Human extends Model
 
 	protected $casts = [
 		'human_type_id' => 'int',
-		'work_id' => 'int',
 		'corporation_id' => 'int'
 	];
 
 	protected $fillable = [
 		'human_type_id',
-		'work_id',
 		'corporation_id',
 		'first_name',
 		'last_name'
@@ -52,7 +49,13 @@ class Human extends Model
         return ucfirst($this->first_name).' '.ucfirst($this->last_name);
     }
 
-	public function humanType()
+    /** Morphs */
+    public function links()
+    {
+        return $this->morphMany(Link::class, 'linkable');
+    }
+
+	public function human_type()
 	{
 		return $this->belongsTo(HumanType::class);
 	}
@@ -62,19 +65,13 @@ class Human extends Model
 		return $this->belongsTo(Corporation::class);
 	}
 
-	public function work()
+	public function officials()
 	{
-		return $this->belongsTo(Work::class);
+		return $this->hasMany(Official::class);
 	}
 
-	public function buyers()
+	public function visitors()
 	{
-		return $this->hasMany(Buyer::class);
+		return $this->hasMany(Visitor::class);
 	}
-
-    /** Morphs */
-    public function links()
-    {
-        return $this->hasMany(Link::class, 'linkable_id');
-    }
 }
