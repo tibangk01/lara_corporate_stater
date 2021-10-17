@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Media;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -28,58 +29,43 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Project extends Model
 {
-    protected $table = 'projects';
+	protected $table = 'projects';
 
-    protected $casts = [
-        'project_category_id' => 'int',
-        'customer_id' => 'int',
-        'item_id' => 'int'
-    ];
+	protected $casts = [
+		'project_category_id' => 'int',
+		'customer_id' => 'int',
+		'item_id' => 'int'
+	];
 
-    protected $dates = [
-        'realization_date'
-    ];
+	protected $dates = [
+		'realization_date'
+	];
 
-    protected $fillable = [
-        'project_category_id',
-        'customer_id',
-        'item_id',
-        'realization_date'
-    ];
+	protected $fillable = [
+		'project_category_id',
+		'customer_id',
+		'item_id',
+        'name',
+		'realization_date'
+	];
 
-    public function projectCategory()
-    {
-        return $this->belongsTo(ProjectCategory::class);
-    }
+	public function projectCategory()
+	{
+		return $this->belongsTo(ProjectCategory::class);
+	}
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
-    }
+	public function customer()
+	{
+		return $this->belongsTo(Customer::class);
+	}
 
-    public function item()
-    {
-        return $this->belongsTo(Item::class);
-    }
-
-    /** Morphs **/
-    public function media()
-    {
-        return $this->hasOne(Media::class, 'mediaable_id');
-    }
+	public function item()
+	{
+		return $this->belongsTo(Item::class);
+	}
 
     public function medias()
     {
-        return $this->hasMany(Media::class, 'mediaable_id');
-    }
-
-    public function link()
-    {
-        return $this->hasOne(Link::class, 'linkable_id');
-    }
-
-    public function description()
-    {
-        return $this->hasOne(Description::class, 'descriptionable_id');
+        return $this->morphMany(Media::class, 'mediaable');
     }
 }

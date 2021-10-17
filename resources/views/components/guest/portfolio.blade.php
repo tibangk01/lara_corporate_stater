@@ -1,18 +1,18 @@
-<section id="portfolio" class="portfolio">
+@if ($section)
 
-    <div class="container" data-aos="fade-up">
+    <section id="portfolio" class="portfolio">
 
-        <div class="section-title">
+        <div class="container" data-aos="fade-up">
 
-            <h2>{{ $section->name }}</h2>
+            <div class="section-title">
 
-            <h3>{{ __('Check our') }} <span>{{ $section->title }}</span></h3>
+                <h2>{{ $section->name }}</h2>
 
-            <p>{{ $section->description }}</p>
+                <h3>{{ __('Check our') }} <span>{{ $section->title }}</span></h3>
 
-        </div>
+                <p>{{ $section->description }}</p>
 
-        @if ($projectCategories)
+            </div>
 
             <div class="row" data-aos="fade-up" data-aos-delay="100">
 
@@ -22,9 +22,10 @@
 
                         <li data-filter="*" class="filter-active">All</li>
 
-                        @foreach ($projectCategories as $projectCategoy)
+                        @foreach ($projectCategories as $projectCategory)
 
-                            <li data-filter=".filter-{{ strtolower($projectCategoy->name) }}">{{ $projectCategoy->name }}</li>
+                            <li data-filter=".filter-{{ Str::lower($projectCategory->name) }}">
+                                {{ $projectCategory->name }}</li>
 
                         @endforeach
 
@@ -36,23 +37,27 @@
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-                @if ($projects)
+                @foreach ($section->items as $item)
 
-                    @foreach ($projects as $project)
+                    @foreach ($item->projects as $project)
 
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ strtolower($project->projectCategory->name) }}">
-
-                            <img src="{{ asset('storage') . '/' . $project->media->link }}" class="img-fluid" alt="img">
+                        <div
+                            class="col-lg-4 col-md-6 portfolio-item filter-{{ Str::lower($project->projectCategory->name) }}">
+                            <img src="{{ asset('storage') . '/' . $project->medias[0]->link }}" class="img-fluid"
+                                alt="img">
 
                             <div class="portfolio-info">
 
-                                <h4>{{ $project->description->title }}</h4>
+                                <h4>{{ Str::ucfirst($project->name) }}</h4>
 
                                 <p>{{ $project->projectCategory->name }}</p>
 
-                                <a href="{{ asset('storage') . '/' . $project->media->link }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="{{ $project->description->title }}"><i class="bx bx-plus"></i></a>
+                                <a href="{{ asset('storage') . '/' . $project->medias[0]->link }}"
+                                    data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+                                    title="{{ Str::ucfirst($project->name) }}"><i class="bx bx-plus"></i></a>
 
-                                <a href="{{ route('portfolio', ['id' => $project->id]) }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                                <a href="{{ route('portfolio', ['id' => $project->id]) }}" class="details-link"
+                                    title="More Details"><i class="bx bx-link"></i></a>
 
                             </div>
 
@@ -60,12 +65,12 @@
 
                     @endforeach
 
-                @endif
+                @endforeach
 
             </div>
 
-        @endif
+        </div>
 
-    </div>
+    </section>
 
-</section>
+@endif

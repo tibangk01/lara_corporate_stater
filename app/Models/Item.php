@@ -21,7 +21,14 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property Section $section
  * @property ItemType $item_type
+ * @property Collection|Client[] $clients
+ * @property Collection|Employee[] $employees
+ * @property Collection|Enterprise[] $enterprises
+ * @property Collection|Faq[] $faqs
  * @property Collection|Icon[] $icons
+ * @property Collection|Pricing[] $pricings
+ * @property Collection|Project[] $projects
+ * @property Collection|Skill[] $skills
  *
  * @package App\Models
  */
@@ -49,9 +56,24 @@ class Item extends Model
 		return $this->belongsTo(ItemType::class);
 	}
 
-    public function iconableItem()
+	public function clients()
 	{
-		return $this->hasOne(IconableItem::class);
+		return $this->hasMany(Client::class);
+	}
+
+	public function employees()
+	{
+		return $this->hasMany(Employee::class);
+	}
+
+	public function enterprises()
+	{
+		return $this->hasMany(Enterprise::class);
+	}
+
+	public function faqs()
+	{
+		return $this->hasMany(Faq::class);
 	}
 
 	public function icons()
@@ -59,5 +81,25 @@ class Item extends Model
 		return $this->belongsToMany(Icon::class, 'iconable_items')
 					->withPivot('id', 'title', 'value')
 					->withTimestamps();
+	}
+
+	public function pricings()
+	{
+		return $this->hasMany(Pricing::class);
+	}
+
+    public function iconableItem()
+	{
+		return $this->hasOne(IconableItem::class);
+	}
+
+	public function projects()
+	{
+		return $this->hasMany(Project::class);
+	}
+
+	public function skills()
+	{
+		return $this->hasMany(Skill::class);
 	}
 }
