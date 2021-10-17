@@ -1,10 +1,10 @@
-<section id="counts" class="counts">
+@if ($counts)
 
-    <div class="container" data-aos="fade-up">
+    <section id="counts" class="counts">
 
-        <div class="row">
+        <div class="container" data-aos="fade-up">
 
-            @if ($counts)
+            <div class="row">
 
                 @foreach ($counts as $count)
 
@@ -14,7 +14,8 @@
 
                             <i class="bi bi-{{ $count->iconableItem->icon->class }}"></i>
 
-                            <span data-purecounter-start="0" data-purecounter-end="{{ $count->iconableItem->value }}" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ $count->iconableItem->value }}"
+                                data-purecounter-duration="1" class="purecounter"></span>
 
                             <p>{{ $count->iconableItem->title }}</p>
 
@@ -24,10 +25,10 @@
 
                 @endforeach
 
-            @endif
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+@endif

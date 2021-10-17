@@ -2,7 +2,7 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Skill as Skills;
+use App\Models\Skill as SkillModel;
 use Illuminate\View\Component;
 
 class Skill extends Component
@@ -11,7 +11,7 @@ class Skill extends Component
 
     public function __construct()
     {
-        $skills = Skills::get(['title', 'value'])->shuffle();
+        $skills = SkillModel::get(['title', 'value'])->shuffle();
 
         $this->skills = $skills;
     }
