@@ -26,31 +26,31 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Enterprise extends Model
 {
-	protected $table = 'enterprises';
+    protected $table = 'enterprises';
 
-	protected $casts = [
-		'customer_id' => 'int',
-		'item_id' => 'int'
-	];
+    protected $casts = [
+        'customer_id' => 'int',
+        'item_id' => 'int'
+    ];
 
-	protected $fillable = [
-		'customer_id',
-		'item_id',
-		'name'
-	];
+    protected $fillable = [
+        'customer_id',
+        'item_id',
+        'name'
+    ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 
     public function logo()
-	{
-		return $this->hasOne(Logo::class, 'logoable_id');
-	}
-
-	public function customer()
-	{
-		return $this->belongsTo(Customer::class);
-	}
-
-	public function item()
-	{
-		return $this->belongsTo(Item::class);
-	}
+    {
+        return $this->morphOne(Logo::class, 'logoable');
+    }
 }

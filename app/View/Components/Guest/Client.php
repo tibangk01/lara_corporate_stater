@@ -7,15 +7,13 @@ use Illuminate\View\Component;
 
 class Client extends Component
 {
-    //TODO: corporate with logo morphs + db comment
-
     public $enterprises;
 
     public function __construct()
     {
-        $enterprises = Enterprise::with('logo')
-            ->get()
-            ->shuffle();
+        $enterprises = Enterprise::with(['logo' => function ($query) {
+            $query->select('id', 'logoable_id', 'link');
+        }])->get(['id'])->shuffle();
 
         $this->enterprises = $enterprises;
     }

@@ -1,25 +1,25 @@
-<section id="clients" class="clients section-bg">
+@if ($enterprises)
 
-    <div class="container" data-aos="zoom-in">
+    <section id="clients" class="clients section-bg">
 
-        <div class="row">
+        <div class="container" data-aos="zoom-in">
 
-            @if ($enterprises)
+            <div class="row">
 
                 @foreach ($enterprises as $enterprise)
 
                     <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
 
-                        <img src="{{ asset('storage').'/'.$enterprise->logo->link }}" class="img-fluid" alt="{{ $enterprise->name }}">
+                        <img src="{{ asset('storage') . '/' . $enterprise->logo->link }}" class="img-fluid" alt="img">
 
                     </div>
 
                 @endforeach
 
-            @endif
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+@endif
