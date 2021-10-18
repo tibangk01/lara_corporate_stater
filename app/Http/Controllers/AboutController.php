@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\AboutService;
 
 class AboutController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(AboutService $about)
     {
-        // dd($request);
-
-        return view('pages.about');
+        return view('pages.about', ['section' => $about->pageData()]);
     }
 }

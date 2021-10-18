@@ -51,7 +51,7 @@
 
                 <li>
 
-                    <a class="nav-link scrollto {{ request()->route()->named('privacy_policy') ? 'active' : ''}}" href="{{ route('privacy_policy') }}">{{ __('Privacy & Policy') }}</a>
+                    <a class="nav-link scrollto {{ request()->route()->named('privacy_policy') ? 'active' : ''}}" href="{{ route('privacy_policy') }}">{{ __('Privacy policies') }}</a>
 
                 </li>
 

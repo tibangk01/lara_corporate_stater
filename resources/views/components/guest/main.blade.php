@@ -1,4 +1,4 @@
-<div>
+<main id="main" data-aos="fade-up">
 
     @if (! request()->route()->named('home'))
 
@@ -8,4 +8,4 @@
 
     {{ $slot }}
 
-</div>
+</main>

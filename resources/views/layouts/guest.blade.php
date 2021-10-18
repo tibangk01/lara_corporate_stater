@@ -15,7 +15,7 @@
     <meta content="{{ setting('site.description') }}" name="description">
 
     <!-- TODO: page titles -->
-    <title>{{ ' | ' . config('app.name') }}</title>
+    <title>{{ $pageTitle. ' | ' . config('app.name') }}</title>
 
     <!-- Favicons -->
     <link href="{{ asset('storage') . '/' . setting('site.logo') }}" rel="icon">
