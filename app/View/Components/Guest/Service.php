@@ -22,7 +22,7 @@ class Service extends Component
         $this->section = $section;
 
         $items = Item::whereSectionId(1)
-            ->with(['iconableItem.icon'])
+            ->with(['iconableItem.icon', 'iconableItem.services'])
             ->get()
             ->shuffle();
 

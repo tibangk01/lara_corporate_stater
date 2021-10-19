@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\ServiceService;
 
 class ServiceController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(ServiceService $service)
     {
-        // dd($request->has('id'));
-        return view('pages.service');
+        return view('pages.service', [
+            'services' => $service->pageData(request()->input('id'))
+        ]);
     }
 }

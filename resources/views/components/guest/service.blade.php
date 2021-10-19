@@ -5,24 +5,26 @@
          <!-- TODO: indent code, service delays, card behaviors -->
          <div class="section-title">
              <h2>{{ $section->name }}</h2>
-             <h3>{{ __('Check our') }} <span>{{ $section->title }}</span></h3>
+             <h3>{{ __('Check our') }} <span> <a href="{{ route('service') }}">{{ $section->title }}</a> </span>
+             </h3>
              <p>{{ $section->description }}</p>
          </div>
 
          <div class="row">
 
-
              @if ($items)
 
                  @foreach ($items as $item)
 
-                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
+                         data-aos-delay="100">
                          <div class="icon-box">
                              <div class="icon"><i
                                      class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
                              </div>
-                             <!-- TODO: service route-->
-                             <h4><a href="">{{ $item->iconableItem->title }}</a></h4>
+                             <h4><a
+                                     href="{{ route('service', ['id' => $item->iconableItem->services->first->id]) }}">{{ $item->iconableItem->title }}</a>
+                             </h4>
                              <p>{{ $item->iconableItem->value }}</p>
                          </div>
                      </div>
