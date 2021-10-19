@@ -27,30 +27,40 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Customer extends Model
 {
-	protected $table = 'customers';
+    protected $table = 'customers';
 
-	protected $casts = [
-		'corporation_id' => 'int',
-		'customer_type_id' => 'int'
-	];
+    protected $casts = [
+        'corporation_id' => 'int',
+        'customer_type_id' => 'int'
+    ];
 
-	protected $fillable = [
-		'corporation_id',
-		'customer_type_id'
-	];
+    protected $fillable = [
+        'corporation_id',
+        'customer_type_id'
+    ];
 
-	public function corporation()
-	{
-		return $this->belongsTo(Corporation::class);
-	}
+    public function corporation()
+    {
+        return $this->belongsTo(Corporation::class);
+    }
 
-	public function customerType()
-	{
-		return $this->belongsTo(CustomerType::class);
-	}
+    public function client()
+    {
+        return $this->hasOne(Client::class);
+    }
 
-	public function enterprises()
-	{
-		return $this->hasMany(Enterprise::class);
-	}
+    public function customerType()
+    {
+        return $this->belongsTo(CustomerType::class);
+    }
+
+    public function enterprise()
+    {
+        return $this->hasOne(Enterprise::class);
+    }
+
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
 }

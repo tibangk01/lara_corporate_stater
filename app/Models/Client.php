@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Client
- * 
+ *
  * @property int $id
  * @property int $official_id
  * @property int $customer_id
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $message
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Customer $customer
  * @property Item $item
  * @property Official $official
@@ -59,4 +59,5 @@ class Client extends Model
 	{
 		return $this->belongsTo(Official::class);
 	}
+    
 }

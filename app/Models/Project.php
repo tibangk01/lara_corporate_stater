@@ -29,43 +29,53 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Project extends Model
 {
-	protected $table = 'projects';
+    protected $table = 'projects';
 
-	protected $casts = [
-		'project_category_id' => 'int',
-		'customer_id' => 'int',
-		'item_id' => 'int'
-	];
+    protected $casts = [
+        'project_category_id' => 'int',
+        'customer_id' => 'int',
+        'item_id' => 'int'
+    ];
 
-	protected $dates = [
-		'realization_date'
-	];
+    protected $dates = [
+        'realization_date'
+    ];
 
-	protected $fillable = [
-		'project_category_id',
-		'customer_id',
-		'item_id',
+    protected $fillable = [
+        'project_category_id',
+        'customer_id',
+        'item_id',
         'name',
-		'realization_date'
-	];
+        'realization_date'
+    ];
 
-	public function projectCategory()
-	{
-		return $this->belongsTo(ProjectCategory::class);
-	}
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
-	public function customer()
-	{
-		return $this->belongsTo(Customer::class);
-	}
+    public function description()
+    {
+        return $this->morphOne(Description::class, 'descriptionable');
+    }
 
-	public function item()
-	{
-		return $this->belongsTo(Item::class);
-	}
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
+    public function link()
+    {
+        return $this->morphOne(Link::class, 'linkable');
+    }
 
     public function medias()
     {
         return $this->morphMany(Media::class, 'mediaable');
+    }
+
+    public function projectCategory()
+    {
+        return $this->belongsTo(ProjectCategory::class);
     }
 }

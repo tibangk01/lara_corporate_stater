@@ -1,9 +1,9 @@
-@if ($services)
 
     <x-guest.layout>
 
         <x-guest.main>
 
+            @if ($services)
             <section id="services" class="services">
 
                 <div class="container" data-aos="fade-up">
@@ -34,13 +34,13 @@
                         @endforeach
 
                     </div>
-                    
+
                 </div>
 
             </section>
 
+            @endif
         </x-guest.main>
 
     </x-guest.layout>
 
-@endif
