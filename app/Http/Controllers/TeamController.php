@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\EmployeeService;
 
 class TeamController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(EmployeeService $employee)
     {
-        return view('pages.team');
+        return view('pages.team', ['employees' => $employee->pageData(request()->input('id'))]);
     }
 }

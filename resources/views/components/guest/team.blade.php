@@ -9,7 +9,7 @@
                 <h2>{{ $section->title }}</h2>
 
 
-                <h3>{{ __('Our Hardworking') }} <span>{{ $section->name }}</span></h3>
+                <h3>{{ __('Our Hardworking') }} <span> <a href="{{ route('team') }}">{{ $section->name }}</a> </span></h3>
 
                 <p>{{ $section->description }}</p>
 
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="member-info">
-                                <h4>{{ $item->employee->official->human->full_name }}</h4>
+                                <h4> <a href="{{ route('team', ['id' =>$item->employee->id ]) }}">{{ $item->employee->official->human->full_name }}</a></h4>
                                 <span>{{ $item->employee->official->work->name }}</span>
                             </div>
                         </div>
