@@ -2,14 +2,13 @@
 
     <div class="container" data-aos="fade-up">
 
-        <!-- TODO: refactor site page checking-->
         @if ($sitePage)
 
         <div class="section-title">
 
             <h2>{{ $sitePage->section->name }}</h2>
 
-            <h3>{{ __('Frequently Asked') }} <span>{{ $sitePage->section->title }}</span></h3>
+            <h3>{{ __('Frequently Asked') }} <span> <a href="{{ route('faq') }}">{{ $sitePage->section->title }}</a></span></h3>
 
             <p>{{ $sitePage->section->description }}</p>
 

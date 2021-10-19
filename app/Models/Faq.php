@@ -24,24 +24,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Faq extends Model
 {
-	protected $table = 'faqs';
+    protected $table = 'faqs';
 
-	protected $casts = [
-		'item_id' => 'int'
-	];
+    protected $casts = [
+        'item_id' => 'int'
+    ];
 
-	protected $fillable = [
-		'item_id',
-		'slugable'
-	];
-
-	public function item()
-	{
-		return $this->belongsTo(Item::class);
-	}
+    protected $fillable = [
+        'item_id',
+        'slugable'
+    ];
 
     public function description()
     {
-        return $this->hasOne(Description::class, 'descriptionable_id');
+        return $this->morphOne(Description::class, 'descriptionable');
+    }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
     }
 }

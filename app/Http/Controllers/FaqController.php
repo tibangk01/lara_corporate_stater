@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\FaqService;
 
 class FaqController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(FaqService $faq)
     {
+        dd($faq->pageData(request()->input('id')));
         return view('pages.faq');
 
     }
