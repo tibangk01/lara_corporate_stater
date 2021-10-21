@@ -1,3 +1,4 @@
+{{ dd($privacyPolicies) }}
 <x-guest.layout>
 
     <x-guest.main>

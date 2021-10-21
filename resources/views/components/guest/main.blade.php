@@ -1,10 +1,16 @@
-<main id="main" data-aos="fade-up">
+{{-- <main id="main" data-aos="fade-up">
 
-    @if (! request()->route()->named('home'))
+    {{-- @if (! request()->route()->named('home'))
 
         <x-guest.breadcrumb/>
 
-    @endif
+    @endif --}}
+
+    {{-- {{ $slot }}
+
+</main> --}}
+
+<main id="main">
 
     {{ $slot }}
 

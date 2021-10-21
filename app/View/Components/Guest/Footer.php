@@ -28,7 +28,7 @@ class Footer extends Component
 
         $this->sitePages = SitePage::orderBy('name')
             ->whereIn('name', [
-                'about', 'privacy', 'team', 'services', 'contact', 'team', 'faq'
+                'about', 'privacy policy', 'team', 'services', 'contact', 'team', 'faq'
             ])
             ->get(['name']);
 

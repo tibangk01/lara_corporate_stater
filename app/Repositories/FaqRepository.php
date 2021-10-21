@@ -15,6 +15,10 @@ class FaqRepository
 
     public function find($id = null)
     {
-       return;
+        return $this->faq->when($id, function ($query, $id) {
+            $query->whereId($id);
+        })->with(['description' => function ($query) {
+            $query->select(['id', 'descriptionable_id', 'title', 'content']);
+        }])->get(['id', 'slugable']);
     }
 }

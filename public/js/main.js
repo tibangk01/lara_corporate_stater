@@ -34,7 +34,7 @@
   }
 
   /**
-   * Easy on scroll event listener
+   * Easy on scroll event listener 
    */
   const onscroll = (el, listener) => {
     el.addEventListener('scroll', listener)
@@ -186,7 +186,7 @@
   if (skilsContent) {
     new Waypoint({
       element: skilsContent,
-      offset: '100%', // TODO: search for offset waypoint.js
+      offset: '80%',
       handler: function(direction) {
         let progress = select('.progress .progress-bar', true);
         progress.forEach((el) => {
@@ -245,7 +245,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox
+   * Initiate portfolio lightbox 
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'

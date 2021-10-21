@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\PrivacyPolicyService;
 
 class PrivacyPolicyController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(PrivacyPolicyService $privacyPolicy)
     {
-        return view('pages.privacy-policy');
+        return view('pages.privacy-policy', [
+            'privacyPolicies' => $privacyPolicy->pageData()
+        ]);
     }
 
     //TODO: design the db schema img
