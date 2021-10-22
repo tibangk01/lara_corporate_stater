@@ -56,7 +56,19 @@ class CorporationRepository
             ->links->filter(function ($link) {
 
                 return $link->linkType;
-                
+
             })->shuffle();
+    }
+
+    public function logoLink()
+    {
+        return $this->corporation->with(['logo' => function($q){
+            $q->select(['id', 'logoable_id', 'link']);
+        }])->latest()->get(['id'])->first()->logo->link;
+    }
+
+    public function name()
+    {
+        return $this->corporation->latest()->get(['name'])->first()->name;
     }
 }
