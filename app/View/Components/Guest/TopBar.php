@@ -2,36 +2,20 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Contact;
-use App\Models\Human;
-use App\Models\LinkType;
-use App\Models\HumanType;
-use App\Models\ContactType;
-use App\Models\Corporation;
-use App\Models\Questioning;
-use App\Models\Visitor;
 use Illuminate\View\Component;
+use App\Services\TopBarService;
 
 class TopBar extends Component
 {
-    public $contactTypes;
+    public $contacts;
 
-    public $linkTypes;
+    public $socialLinks;
 
-    public function __construct()
+    public function __construct(TopBarService $corporation)
     {
-        // Clean namespaces
+        $this->contacts = $corporation->topBarContacts();
 
-        $this->contactTypes = ContactType::where(function ($query) {
-            $query->whereIn('name', ['Email', 'Phone']);
-        })->with(['contacts', 'icon'])->get();
-
-        $this->linkTypes = LinkType::whereIn('name', [
-            'Facebook', 'Twitter', 'Instagram', 'Linkedin'
-        ])->with(['icon', 'links' => function ($query) {
-            $query->where('linkable_type', 'like', '%Corporation');
-        }])->get()->shuffle();
-
+        $this->socialLinks = $corporation->topBarSocialLinks();
     }
 
     public function render()
