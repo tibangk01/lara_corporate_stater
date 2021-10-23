@@ -3,17 +3,16 @@
 namespace App\View\Components\Guest;
 
 use App\Models\Skill as SkillModel;
+use App\Services\SkillService;
 use Illuminate\View\Component;
 
 class Skill extends Component
 {
     public $skills;
 
-    public function __construct()
+    public function __construct(SkillService $service)
     {
-        $skills = SkillModel::get(['title', 'value'])->shuffle();
-
-        $this->skills = $skills;
+        $this->skills = $service->find();
     }
 
 

@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Section;
 use App\Services\SectionService;
 use Illuminate\View\Component;
 
