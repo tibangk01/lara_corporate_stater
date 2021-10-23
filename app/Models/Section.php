@@ -40,7 +40,7 @@ class Section extends Model
         'description'
     ];
 
-    //TODO: comment db tables
+    // avoid confusion with description property
     public function descriptionable()
     {
         return $this->morphOne(Description::class, 'descriptionable');
