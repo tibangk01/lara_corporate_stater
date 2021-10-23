@@ -13,8 +13,8 @@ class ServiceService
         $this->service = $service;
     }
 
-    public function pageData($id)
+    public function fourFeaturedInRadomOrder()
     {
-        return $this->service->with_iconableItem_icon($id);
+        return $this->service->fourFeaturedInRadomOrder();
     }
 }

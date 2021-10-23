@@ -8,13 +8,13 @@ use Illuminate\View\Component;
 class Hero extends Component
 {
     public $corporation;
-    public $heroBackgroud;
+    public $heroBackground;
     public $youtubeLink;
 
     public function __construct(HeroService $service)
     {
         $this->corporation = $service->nameSlogan();
-        $this->heroBackgroud = $service->heroBackground();
+        $this->heroBackground = $service->heroBackground();
         $this->youtubeLink = $service->youtubeLink();
     }
 

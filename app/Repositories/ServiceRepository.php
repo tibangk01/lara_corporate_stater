@@ -13,13 +13,11 @@ class ServiceRepository
         $this->service = $service;
     }
 
-    public function with_iconableItem_icon($id = null)
+    public function fourFeaturedInRadomOrder()
     {
-        return $this->service->when($id, function ($query, $id) {
-            $query->whereId($id);
-        })->with(['iconableItem' => function ($query) {
-            $query->select(['id', 'icon_id', 'title', 'value',])
-                ->with(['icon:id,class']);
-        }])->get(['id', 'iconable_item_id']);
+        return $this->service->whereIsFeatured(1)->with(['iconableItem' => function($q){
+            $q->select(['id', 'icon_id'])
+            ->with(['icon:id,class,is_extended']);
+        }])->inRandomOrder()->take(4)->get(['id', 'iconable_item_id']);
     }
 }

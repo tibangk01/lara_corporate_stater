@@ -2,31 +2,16 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Item;
-use App\Models\Section;
+use App\Services\ServiceService;
 use Illuminate\View\Component;
 
 class Service extends Component
 {
-    public $section;
+    public $services;
 
-    public $items;
-
-    public function __construct()
+    public function __construct(ServiceService $service)
     {
-        //TODO: improve query by section name
-
-        $section = Section::whereSitePageId(3)
-            ->get(['name', 'title', 'description'])[0];
-
-        $this->section = $section;
-
-        $items = Item::whereSectionId(1)
-            ->with(['iconableItem.icon', 'iconableItem.services'])
-            ->get()
-            ->shuffle();
-
-        $this->items = $items;
+        $this->services = $service->fourFeaturedInRadomOrder();
     }
 
     public function render()
