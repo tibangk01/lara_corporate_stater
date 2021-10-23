@@ -2,20 +2,16 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Enterprise;
+use App\Services\EnterpriseService;
 use Illuminate\View\Component;
 
 class Client extends Component
 {
-    public $enterprises;
+    public $clients;
 
-    public function __construct()
+    public function __construct(EnterpriseService $service)
     {
-        $enterprises = Enterprise::with(['logo' => function ($query) {
-            $query->select('id', 'logoable_id', 'link');
-        }])->get(['id'])->shuffle();
-
-        $this->enterprises = $enterprises;
+        $this->clients = $service->clientSectionData();
     }
 
     public function render()

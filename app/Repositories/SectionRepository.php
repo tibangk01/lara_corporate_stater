@@ -28,4 +28,16 @@ class SectionRepository
                     }]);
             }])->get(['id', 'name', 'title', 'description'])->first();
     }
+
+    public function count_withItemIconableItemIcon()
+    {
+        return $this->section->whereName('count')
+            ->with(['items' => function ($q) {
+                $q->select(['id', 'section_id'])
+                    ->with(['iconableItem' => function ($q) {
+                        $q->select(['id', 'item_id', 'icon_id', 'title', 'value'])
+                            ->with(['icon:id,class,is_extended']);
+                    }]);
+            }])->get(['id', 'name', 'title', 'description'])->first();
+    }
 }

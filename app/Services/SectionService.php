@@ -17,4 +17,9 @@ class SectionService
     {
         return $this->section->about_morphMediaDescriptionWithItemIconableItemIcon();
     }
+
+    public function countSectionData()
+    {
+        return $this->section->count_withItemIconableItemIcon();
+    }
 }

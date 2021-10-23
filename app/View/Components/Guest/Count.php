@@ -2,21 +2,18 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Count as CountModel;
+use App\Services\CountService;
 use Illuminate\View\Component;
+use App\Services\SectionService;
+use App\Models\Count as CountModel;
 
 class Count extends Component
 {
-    public $counts;
+    public $section;
 
-    public function __construct()
+    public function __construct(SectionService $service)
     {
-        $counts = CountModel::with(['iconableItem' => function ($query) {
-            $query->select('id', 'icon_id', 'title', 'value')
-                ->with(['icon:id,class']);
-        }])->get(['id', 'iconable_item_id']);
-
-        $this->counts = $counts;
+        $this->section = $service->countSectionData();
     }
 
     public function render()
