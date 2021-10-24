@@ -31,8 +31,7 @@ class Faq extends Model
     ];
 
     protected $fillable = [
-        'item_id',
-        'slugable'
+        'item_id'
     ];
 
     public function description()

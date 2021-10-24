@@ -41,6 +41,19 @@ class SectionRepository
             }])->get(['id', 'name', 'title', 'description'])->first();
     }
 
+    public function faq_withItemMorphDescription()
+    {
+        return $this->section->whereName('f.a.q')->with(['items' => function ($q) {
+            $q->select(['id', 'section_id'])
+                ->with(['faq' => function ($q) {
+                    $q->select(['id', 'item_id'])
+                        ->with(['description' => function ($q) {
+                            $q->select(['id', 'descriptionable_id', 'title', 'content']);
+                        }]);
+                }]);
+        }])->get(['id', 'name', 'title', 'description'])->first();
+    }
+
     public function service_withItemIconableItemIcon()
     {
         return $this->section->whereName('service')

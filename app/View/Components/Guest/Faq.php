@@ -2,32 +2,17 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Faq as FaqModel;
-use App\Models\SitePage;
+use App\Services\SectionService;
 use Illuminate\View\Component;
 
 class Faq extends Component
 {
 
-    public $sitePage;
+    public $section;
 
-    public $faqs;
-
-    public function __construct()
+    public function __construct(SectionService $section)
     {
-        $sitePage = SitePage::with(['section'])
-            ->where('name', 'Faq')
-            ->get()[0];
-
-        $this->sitePage = $sitePage;
-
-        $faqs = FaqModel::with(['description' => function($query){
-
-            $query->where('descriptionable_type', 'like', '%Faq');
-            
-        }])->get();
-
-        $this->faqs = $faqs;
+        $this->section = $section->faqSectionData();
     }
 
     public function render()

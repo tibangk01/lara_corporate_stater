@@ -22,6 +22,12 @@ class SectionService
     {
         return $this->section->count_withItemIconableItemIcon();
     }
+
+    public function faqSectionData()
+    {
+        return $this->section->faq_withItemMorphDescription();
+    }
+
     public function portfolioData()
     {
         return $this->section->project_withItemProjectMorphMedia_ProjectCategory();
@@ -46,7 +52,6 @@ class SectionService
     {
         return  $this->section->pricing_ItemPricingCurrencyFeatures();
     }
-
 
 
 }

@@ -71,9 +71,9 @@ class Item extends Model
 		return $this->hasMany(Enterprise::class);
 	}
 
-	public function faqs()
+	public function faq()
 	{
-		return $this->hasMany(Faq::class);
+		return $this->hasOne(Faq::class);
 	}
 
 	public function icons()
