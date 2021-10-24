@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class IconableItem
- * 
+ *
  * @property int $id
  * @property int $item_id
  * @property int $icon_id
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $value
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Icon $icon
  * @property Item $item
  * @property Collection|Service[] $services
@@ -53,8 +53,8 @@ class IconableItem extends Model
 		return $this->belongsTo(Item::class);
 	}
 
-	public function services()
+	public function service()
 	{
-		return $this->hasMany(Service::class);
+		return $this->hasOne(Service::class);
 	}
 }

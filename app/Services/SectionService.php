@@ -22,4 +22,16 @@ class SectionService
     {
         return $this->section->count_withItemIconableItemIcon();
     }
+
+    public function serviceSectionData()
+    {
+        return $this->section->service_withItemIconableItemIcon();
+    }
+
+    public function testimonialSectionData()
+    {
+        return $this->section->testimonial_withItemClientOfficial_humanWork();  
+    }
+
+
 }

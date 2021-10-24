@@ -56,9 +56,9 @@ class Item extends Model
 		return $this->belongsTo(ItemType::class);
 	}
 
-	public function clients()
+	public function client()
 	{
-		return $this->hasMany(Client::class);
+		return $this->hasOne(Client::class);
 	}
 
 	public function employee()

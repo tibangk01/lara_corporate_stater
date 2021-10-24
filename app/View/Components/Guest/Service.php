@@ -2,16 +2,16 @@
 
 namespace App\View\Components\Guest;
 
-use App\Services\ServiceService;
 use Illuminate\View\Component;
+use App\Services\SectionService;
 
 class Service extends Component
 {
-    public $services;
+    public $section;
 
-    public function __construct(ServiceService $service)
+    public function __construct(SectionService $service)
     {
-        $this->services = $service->fourFeaturedInRadomOrder();
+        $this->section = $service->serviceSectionData();
     }
 
     public function render()
