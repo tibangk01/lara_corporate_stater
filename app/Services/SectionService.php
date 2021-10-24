@@ -30,7 +30,12 @@ class SectionService
 
     public function testimonialSectionData()
     {
-        return $this->section->testimonial_withItemClientOfficial_humanWork();  
+        return $this->section->testimonial_withItemClientOfficial_humanWork();
+    }
+
+    public function portfolioData()
+    {
+        return $this->section->project_withItemProjectMorphMedia_ProjectCategory();
     }
 
 

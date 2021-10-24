@@ -68,4 +68,20 @@ class SectionRepository
             }])
             ->get(['id', 'name', 'title', 'description'])->first();
     }
+
+    public function project_withItemProjectMorphMedia_ProjectCategory()
+    {
+        return $this->section->whereName('portfolio')
+            ->with(['items' => function ($q) {
+                $q->select(['id', 'section_id'])
+                    ->with(['project' => function ($q) {
+                        $q->select(['id', 'item_id', 'project_category_id', 'name'])
+                            ->with(['projectCategory' => function ($q) {
+                                $q->select(['id', 'name']);
+                            }, 'media' => function ($q) {
+                                $q->select(['id', 'mediaable_id', 'link']);
+                            }]);
+                    }]);
+            }])->get(['id', 'name', 'title', 'description'])->first();
+    }
 }

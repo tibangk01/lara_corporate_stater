@@ -2,9 +2,9 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Section;
 use Illuminate\View\Component;
-use App\Models\ProjectCategory;
+use App\Services\ProjectCategoryService;
+use App\Services\SectionService;
 
 class Portfolio extends Component
 {
@@ -12,18 +12,12 @@ class Portfolio extends Component
 
     public $projectCategories;
 
-    public function __construct()
-    {
-        $this->section = Section::whereName('portfolio')
-            ->with(['items' => function ($query) {
-                $query->select(['id', 'section_id'])
-                    ->with(['projects' => function ($query) {
-                        $query->select('id', 'item_id', 'project_category_id')
-                            ->with(['medias:id,mediaable_id,link', 'projectCategory:id,name']);
-                    }]);
-            }])->get(['id', 'name', 'title', 'description'])->first();
-
-        $this->projectCategories = ProjectCategory::get();
+    public function __construct(
+        ProjectCategoryService $projectCategory,
+        SectionService $section
+    ) {
+        $this->projectCategories = $projectCategory->find();
+        $this->section = $section->portfolioData();
     }
 
     public function render()

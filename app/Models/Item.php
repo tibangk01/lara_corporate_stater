@@ -93,9 +93,9 @@ class Item extends Model
 		return $this->hasOne(IconableItem::class);
 	}
 
-	public function projects()
+	public function project()
 	{
-		return $this->hasMany(Project::class);
+		return $this->hasOne(Project::class);
 	}
 
 	public function skills()

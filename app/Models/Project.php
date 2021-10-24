@@ -69,6 +69,11 @@ class Project extends Model
         return $this->morphOne(Link::class, 'linkable');
     }
 
+    public function media()
+    {
+        return $this->morphOne(Media::class, 'mediaable');
+    }
+
     public function medias()
     {
         return $this->morphMany(Media::class, 'mediaable');
