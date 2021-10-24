@@ -83,9 +83,9 @@ class Item extends Model
 					->withTimestamps();
 	}
 
-	public function pricings()
+	public function pricing()
 	{
-		return $this->hasMany(Pricing::class);
+		return $this->hasOne(Pricing::class);
 	}
 
     public function iconableItem()

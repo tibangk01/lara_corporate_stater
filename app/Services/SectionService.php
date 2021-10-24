@@ -22,10 +22,19 @@ class SectionService
     {
         return $this->section->count_withItemIconableItemIcon();
     }
+    public function portfolioData()
+    {
+        return $this->section->project_withItemProjectMorphMedia_ProjectCategory();
+    }
 
     public function serviceSectionData()
     {
         return $this->section->service_withItemIconableItemIcon();
+    }
+
+    public function teamSectiondata()
+    {
+        return $this->section->team_withItemEmployeeOfficial_workHumanWithLinksLinkTypeIcon();
     }
 
     public function testimonialSectionData()
@@ -33,10 +42,11 @@ class SectionService
         return $this->section->testimonial_withItemClientOfficial_humanWork();
     }
 
-    public function portfolioData()
+    public function pricingSectionData()
     {
-        return $this->section->project_withItemProjectMorphMedia_ProjectCategory();
+        return  $this->section->pricing_ItemPricingCurrencyFeatures();
     }
+
 
 
 }

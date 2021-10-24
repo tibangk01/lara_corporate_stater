@@ -7,7 +7,7 @@
 
                 <h2>{{ $section->title }}</h2>
 
-                <h3>Check our <span>{{ $section->name }}</span></h3>
+                <h3>Check our <span><a href="{{ route('portfolio') }}">{{ $section->name }}</a></span></h3>
 
                 <p>{{ $section->description }}</p>
 

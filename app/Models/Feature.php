@@ -12,12 +12,12 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Feature
- * 
+ *
  * @property int $id
  * @property string $content
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Collection|Pricing[] $pricings
  *
  * @package App\Models
@@ -27,7 +27,7 @@ class Feature extends Model
 	protected $table = 'features';
 
 	protected $fillable = [
-		'content'
+		'name'
 	];
 
 	public function pricings()

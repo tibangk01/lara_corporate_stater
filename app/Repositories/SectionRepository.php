@@ -84,4 +84,51 @@ class SectionRepository
                     }]);
             }])->get(['id', 'name', 'title', 'description'])->first();
     }
+
+    //TODO :reorder this methods alphabetically
+    public function team_withItemEmployeeOfficial_workHumanWithLinksLinkTypeIcon()
+    {
+        return $this->section->whereName('team')
+            ->with(['items' => function ($q) {
+                $q->select(['id', 'section_id'])
+                    ->with(['employee' => function ($q) {
+                        $q->select(['id', 'item_id', 'official_id', 'profile'])
+                            ->with(['official' => function ($q) {
+                                $q->select(['id', 'human_id', 'work_id'])
+                                    ->with([
+                                        'work:id,name',
+                                        'human' => function ($q) {
+                                            $q->select(['id', 'first_name', 'last_name'])
+                                                ->with(['links' => function ($q) {
+                                                    $q->select(['id', 'link_type_id', 'linkable_id', 'url'])
+                                                        ->with(['linkType' => function ($q) {
+                                                            $q->select(['id', 'icon_id'])
+                                                                ->with(['icon:id,class,is_extended']);
+                                                        }]);
+                                                }]);
+                                        },
+                                    ]);
+                            }]);
+                    }]);
+            }])->get(['id', 'name', 'title', 'description'])->first();
+    }
+
+    public function pricing_ItemPricingCurrencyFeatures()
+    {
+        return $this->section->whereName('pricing')
+            ->with(['items' => function ($q) {
+                $q->select(['id', 'section_id'])
+                    ->with(['pricing' => function ($q) {
+                        $q->select([
+                            'id',
+                            'item_id',
+                            'currency_id',
+                            'title',
+                            'month_price',
+                            'is_featured',
+                            'is_advanced'
+                        ])->with(['currency:id,name', 'features']); // TODO: filter this for pivot table
+                    }]);
+            }])->get(['id', 'name', 'title', 'description'])->first();
+    }
 }
