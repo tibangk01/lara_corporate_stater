@@ -2,13 +2,13 @@
 
     <x-guest.main>
 
-        @if ($projects)
+        @isset($projects)
 
             <section id="portfolio-details" class="portfolio-details">
 
                 <div class="container">
 
-                    @foreach ($projects as $project)
+                    @forelse ($projects as $project)
 
                         <div class="row gy-4">
 
@@ -83,13 +83,17 @@
 
                         </div>
 
-                    @endforeach
+                    @empty
+
+                        No item yet.
+
+                    @endforelse
 
                 </div>
 
             </section>
 
-        @endif
+        @endisset
 
     </x-guest.main>
 

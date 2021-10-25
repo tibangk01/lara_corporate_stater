@@ -20,6 +20,23 @@ class ServiceRepository
         }])->get(['id', 'iconable_item_id']);
     }
 
+    public function findWithIcon()
+    {
+        return $this->service->with(['iconableItem' => function ($q) {
+            $q->select(['id', 'icon_id',  'title'])
+                ->with(['icon:id,class,is_extended']);
+        }])->get(['id', 'iconable_item_id']);
+    }
+
+    public function findByIdWithIcon()
+    {
+        return $this->service->whereId(request()->input('id'))
+            ->with(['iconableItem' => function ($q) {
+                $q->select(['id', 'icon_id',  'title'])
+                    ->with(['icon:id,class,is_extended']);
+            }])->get(['id', 'iconable_item_id']);
+    }
+
     public function fourFeaturedInRadomOrder()
     {
         return $this->service->whereIsFeatured(1)->with(['iconableItem' => function ($q) {

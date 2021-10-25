@@ -9,7 +9,7 @@ class ServiceController extends Controller
     public function __invoke(ServiceService $service)
     {
         return view('pages.service', [
-            'services' => $service->pageData(request()->input('id'))
+            'services' => $service->pageData()
         ]);
     }
 }

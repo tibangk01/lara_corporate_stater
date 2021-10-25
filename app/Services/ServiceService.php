@@ -17,4 +17,11 @@ class ServiceService
     {
         return $this->service->fourFeaturedInRadomOrder();
     }
+
+    public function pageData()
+    {
+        return request()->input('id')
+            ? $this->service->findByIdWithIcon()
+            : $this->service->findWithIcon();
+    }
 }
