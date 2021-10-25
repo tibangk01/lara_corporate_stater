@@ -27,7 +27,6 @@ class CorporationRepository
 
                         ->with(['icon:id,class,is_extended']);
                 }]);
-
         }])->latest()->get(['id'])->first()
 
             ->contacts->filter(function ($contact) {
@@ -50,13 +49,11 @@ class CorporationRepository
 
                         ->with(['icon:id,class,is_extended']);
                 }]);
-
         }])->latest()->get(['id'])->first()
 
             ->links->filter(function ($link) {
 
                 return $link->linkType;
-
             })->shuffle();
     }
 
@@ -75,8 +72,25 @@ class CorporationRepository
         }])->latest()->get(['id'])->first()->medias->filter(function ($media) {
 
             return $media->mediaCategory;
-
         })->first()->link;
+    }
+
+    public function geolocalizationLink()
+    {
+        return $this->corporation->with(['links' => function ($q) {
+
+            $q->select(['id', 'link_type_id', 'linkable_id', 'url'])
+
+                ->with(['linkType' => function ($q) {
+
+                    $q->select(['id', 'name'])
+
+                        ->whereName('geolocalization url');
+                }]);
+        }])->latest()->get(['id'])->first()->links->filter(function ($link) {
+
+            return $link->linkType;
+        })->first()->url;
     }
 
     public function logoLink()
@@ -84,7 +98,6 @@ class CorporationRepository
         return $this->corporation->with(['logo' => function ($q) {
 
             $q->select(['id', 'logoable_id', 'link']);
-
         }])->latest()->get(['id'])->first()->logo->link;
     }
 
@@ -113,7 +126,33 @@ class CorporationRepository
         }])->latest()->get(['id'])->first()->links->filter(function ($link) {
 
             return $link->linkType;
-
         })->first()->url;
+    }
+
+    public function addressEmailPhone()
+    {
+        return $this->corporation->with(['contacts' => function ($q) {
+            $q->select(['id', 'contact_type_id', 'contactable_id', 'value'])
+                ->with(['contactType' => function ($q) {
+                    $q->select(['id', 'name'])
+                        ->whereIn('name', ['address', 'email', 'phone']);
+                }]);
+        }])->latest()->get(['id', 'name'])->first()->contacts->filter(function ($contact) {
+            return $contact->contactType;
+        });
+    }
+
+    public function facebookInstagramTwitterYoutube()
+    {
+        return $this->corporation->with(['links' => function($q){
+            $q->select(['id', 'link_type_id', 'linkable_id', 'url'])
+            ->with(['linkType' => function($q){
+                $q->select(['id', 'icon_id'])
+                ->whereIn('name', ['facebook', 'instagram', 'linkedin', 'twitter', 'youtube'])
+                ->with(['icon:id,class,is_extended']);
+            }]);
+        }])->latest()->get(['id'])->first()->links->filter(function($link){
+            return $link->linkType;
+        });
     }
 }

@@ -2,7 +2,7 @@
 
     <x-guest.main>
 
-        @if ($section)
+        @isset($section)
 
             <section id="portfolio-details" class="portfolio-details">
 
@@ -30,7 +30,7 @@
 
             </section>
 
-        @endif
+        @endisset
 
     </x-guest.main>
 

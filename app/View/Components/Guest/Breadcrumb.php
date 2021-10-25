@@ -2,20 +2,17 @@
 
 namespace App\View\Components\Guest;
 
-use Illuminate\Support\Str;
 use Illuminate\View\Component;
+use App\Services\BreadcrumbService;
 
 class Breadcrumb extends Component
 {
-    public $pageTitle;
+    public $title;
 
-    public function __construct()
+    public function __construct(BreadcrumbService $breadcrumb)
     {
-        $this->pageTitle = request()->route()->named('service') ||request()->route()->named('privacy_policy')
-            ? ucwords(Str::plural(Str::of(request()->route()->getName())->replace('_', ' ')))
-            : ucwords(Str::of(request()->route()->getName())->replace('_', ' '));
+        $this->title = $breadcrumb->title();
     }
-
 
     public function render()
     {

@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Validator;
 
 class VisitorRequestController extends Controller
 {
+
+    //TODO : ajax with messages.
     public function __invoke(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'first_name' => ['required', 'string', 'max:50'],
             'last_name' => ['required', 'string', 'max:50'],
-            'email' => ['required', 'email', 'max:60'],
+            'email' => ['required', 'email', 'max:60', 'unique:contacts,email'],
             'subject' => ['required', 'max:80'],
             'message' => ['required', 'max:255']
         ]);

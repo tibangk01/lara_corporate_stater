@@ -11,18 +11,17 @@ class NewsletterController extends Controller
     public function __invoke(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', 'unique:newsletters', 'max:60'],
+            'newsletter_email' => ['required', 'email', 'unique:newsletters', 'max:60'],
         ]);
 
         if ($validator->fails()) {
             return response()->json(['status' => 0, 'error' => $validator->errors()->toArray()]);
         }else{
 
-            if(!Newsletter::create(['email' => $request->email]))
+            if(!Newsletter::create(['email' => $request->newsletter_email]))
             {
                 return response()->json(['status' => 2]);
             }
-
             return response()->json(['status' => 1]);
         }
     }

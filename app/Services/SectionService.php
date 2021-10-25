@@ -18,6 +18,11 @@ class SectionService
         return $this->section->about_morphMediaDescriptionWithItemIconableItemIcon();
     }
 
+    public function contactSectionData()
+    {
+        return $this->section->contact_withSitePageCorporationMorphDescriptionContactsContactTypeWithIcon();
+    }
+
     public function countSectionData()
     {
         return $this->section->count_withItemIconableItemIcon();
@@ -26,6 +31,11 @@ class SectionService
     public function faqSectionData()
     {
         return $this->section->faq_withItemMorphDescription();
+    }
+
+    public function newsletterSectionData()
+    {
+        return $this->section->newsletter();
     }
 
     public function portfolioData()

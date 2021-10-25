@@ -13,6 +13,16 @@ class SectionRepository
         $this->section = $section;
     }
 
+    public function about_morphMediaDescription()
+    {
+        return $this->section->whereName('about')
+            ->with(['media' => function ($q) {
+                $q->select(['id', 'mediaable_id', 'link']);
+            }, 'descriptionable' => function ($q) {
+                $q->select(['id', 'descriptionable_id', 'title', 'subtitle', 'content']);
+            }])->get(['id'])->first();
+    }
+
     public function about_morphMediaDescriptionWithItemIconableItemIcon()
     {
         return $this->section->whereName('about')
@@ -52,6 +62,12 @@ class SectionRepository
                         }]);
                 }]);
         }])->get(['id', 'name', 'title', 'description'])->first();
+    }
+
+    public function newsletter()
+    {
+        return $this->section->whereName('newsletter')
+        ->get(['id', 'name', 'title', 'description'])->first();
     }
 
     public function service_withItemIconableItemIcon()
@@ -144,4 +160,27 @@ class SectionRepository
                     }]);
             }])->get(['id', 'name', 'title', 'description'])->first();
     }
+
+    public function contact_withSitePageCorporationMorphDescriptionContactsContactTypeWithIcon()
+    {
+        return $this->section->whereName('contact')
+            ->with(['sitePage' => function ($q) {
+                $q->select(['id', 'corporation_id'])
+                    ->with(['corporation' => function ($q) {
+                        $q->select(['id'])
+                            ->with(['contacts' => function ($q) {
+                                $q->select(['id', 'contact_type_id', 'contactable_id', 'value'])
+                                    ->with(['contactType' => function ($q) {
+                                        $q->select(['id', 'icon_id', 'name'])
+                                            ->whereIn('name', ['address', 'email', 'phone'])
+                                            ->with(['icon:id,class,is_extended']);
+                                    }, 'description' => function ($q) {
+                                        $q->select(['id', 'descriptionable_id', 'title']);
+                                    }]);
+                            }]);
+                    }]);
+            }])->get(['id', 'site_page_id', 'name', 'title', 'description'])->first();
+    }
+
+
 }

@@ -1,4 +1,4 @@
-@if ($section)
+@isset($section)
 
     <section id="about" class="about section-bg">
 
@@ -8,7 +8,7 @@
 
                 <h2>{{ $section->name }}</h2>
 
-                <h3>Find Out More <span>{{ $section->title }}</span></h3>
+                <h3>Find Out More <span> <a href="{{ route('about') }}">{{ $section->title }}</a></span></h3>
 
                 <p>{{ $section->description }}</p>
 
@@ -35,28 +35,28 @@
 
                     <ul>
 
-                        @if ($section->items)
+                        @forelse ($section->items as $item)
 
-                            @foreach ($section->items as $item)
+                            <li>
 
-                                <li>
+                                <i
+                                    class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
 
-                                    <i
-                                        class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
+                                <div>
 
-                                    <div>
+                                    <h5>{{ $item->iconableItem->title }}</h5>
 
-                                        <h5>{{ $item->iconableItem->title }}</h5>
+                                    <p>{{ $item->iconableItem->value }}</p>
 
-                                        <p>{{ $item->iconableItem->value }}</p>
+                                </div>
 
-                                    </div>
+                            </li>
 
-                                </li>
+                        @empty
 
-                            @endforeach
+                            No item yet.
 
-                        @endif
+                        @endforelse
 
                     </ul>
 
@@ -74,4 +74,4 @@
 
     </section>
 
-@endif
+@endisset

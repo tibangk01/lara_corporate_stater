@@ -2,20 +2,17 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\SitePage;
+use App\Services\SectionService;
 use Illuminate\View\Component;
 
 class Newsletter extends Component
 {
 
-    public $sitePage;
+    public $section;
 
-    public function __construct()
+    public function __construct(SectionService $section)
     {
-        $this->sitePage = SitePage::with(['section' => function ($query) {
-            $query->whereName('Newsletter');
-        }])->where('name', 'Newsletter')
-            ->get()[0];
+        $this->section = $section->newsletterSectionData();
     }
 
     public function render()

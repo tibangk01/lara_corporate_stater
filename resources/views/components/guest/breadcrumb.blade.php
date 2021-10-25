@@ -4,7 +4,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
 
-            <h2>{{ $pageTitle }} Details</h2>
+            <h2>{{ $title }} Details</h2>
 
             <ol>
 
@@ -13,12 +13,12 @@
                 <li>
 
                     <a href="{{ route(request()->route()->getName()) }}">
-                        {{ $pageTitle }}
+                        {{ $title }}
                     </a>
 
                 </li>
 
-                <li>{{ $pageTitle }} Details</li>
+                <li>{{ $title }} Details</li>
 
             </ol>
 
