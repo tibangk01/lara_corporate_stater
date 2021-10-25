@@ -13,8 +13,10 @@ class EmployeeService
         $this->employee = $employee;
     }
 
-    public function pageData($id = null)
+    public function pageData()
     {
-        return $this->employee->find($id);
+        return request()->input('id')
+        ?  $this->employee->withOfficial_Work_HumanLinksLinkTypeIconfindById()
+        :  $this->employee->withOfficial_Work_HumanLinksLinkTypeIconfind();
     }
 }
