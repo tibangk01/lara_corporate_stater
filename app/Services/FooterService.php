@@ -36,6 +36,6 @@ class FooterService
 
     public function sociallinks()
     {
-        return $this->corporation->facebookInstagramTwitterYoutube();
+        return $this->corporation->withFacebookInstagramLinkedinTwitterYoutubeWithIcons();
     }
 }

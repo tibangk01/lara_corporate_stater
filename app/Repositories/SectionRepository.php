@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Section;
+use App\Models\LinkType;
+use App\Models\Corporation;
 
 class SectionRepository
 {
@@ -181,6 +183,5 @@ class SectionRepository
                     }]);
             }])->get(['id', 'site_page_id', 'name', 'title', 'description'])->first();
     }
-
 
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\LinkType;
 use App\Models\Corporation;
 
 class CorporationRepository
@@ -142,17 +143,33 @@ class CorporationRepository
         });
     }
 
-    public function facebookInstagramTwitterYoutube()
+    public function morphContacts_addressEmailPhoneWithIconMorphDescription()
     {
-        return $this->corporation->with(['links' => function($q){
+        return $this->corporation->with(['contacts' => function ($q) {
+            $q->select(['id', 'contact_type_id', 'contactable_id', 'value'])
+                ->with(['contactType' => function ($q) {
+                    $q->select(['id', 'icon_id', 'name'])
+                        ->whereIn('name', ['address', 'email', 'phone'])
+                        ->with(['icon:id,class,is_extended']);
+                }, 'description' => function ($q) {
+                    $q->select(['id', 'descriptionable_id', 'title']);
+                }]);
+        }])->latest()->get(['id', 'name'])
+            ->first()->contacts->filter(function ($contact) {
+                return $contact->contactType;
+            });
+    }
+
+    public function withFacebookInstagramLinkedinTwitterYoutubeWithIcons()
+    {
+        return $this->corporation->with(['links' => function ($q) {
             $q->select(['id', 'link_type_id', 'linkable_id', 'url'])
-            ->with(['linkType' => function($q){
-                $q->select(['id', 'icon_id'])
-                ->whereIn('name', ['facebook', 'instagram', 'linkedin', 'twitter', 'youtube'])
-                ->with(['icon:id,class,is_extended']);
-            }]);
-        }])->latest()->get(['id'])->first()->links->filter(function($link){
-            return $link->linkType;
-        });
+                ->whereIn('link_type_id', LinkType::whereIn('name', [
+                    'linkedin', 'facebook', 'instagram', 'twitter', 'youtube'
+                ])->pluck('id'))->with(['linkType' => function ($q) {
+                    $q->select(['id', 'icon_id'])
+                        ->with(['icon:id,class,is_extended']);
+                }]);
+        }])->latest()->get(['id'])->first()->links;
     }
 }

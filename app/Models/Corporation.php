@@ -52,9 +52,9 @@ class Corporation extends Model
 		return $this->hasMany(SitePage::class);
 	}
 
-	public function teams()
+	public function team()
 	{
-		return $this->hasMany(Team::class);
+		return $this->hasOne(Team::class);
 	}
 
     public function medias()

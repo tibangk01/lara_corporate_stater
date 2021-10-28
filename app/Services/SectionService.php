@@ -63,5 +63,4 @@ class SectionService
         return  $this->section->pricing_ItemPricingCurrencyFeatures();
     }
 
-
 }

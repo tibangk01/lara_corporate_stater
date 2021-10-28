@@ -8,7 +8,7 @@
 
                 <h2>{{ $section->name }}</h2>
 
-                <h3>Frequently Asked <span><a href="{{ route('faq') }}">{{ $section->title }}</a></span></h3>
+                <h3>Frequently Asked <span>{{ $section->title }}</span></h3>
 
                 <p>{{ $section->description }}</p>
 
@@ -32,11 +32,6 @@
 
                                     <p>
                                         {{ $item->faq->description->content }}
-
-                                        <br>
-                                        <a class="btn btn-sm btn-secondary rounded-0"
-                                            href="{{ route('faq', ['id' => $item->faq->id]) }}">Read more ...</a>
-
                                     </p>
 
                                 </div>

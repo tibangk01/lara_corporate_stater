@@ -4,9 +4,7 @@ namespace App\Services;
 
 class BreadcrumbService
 {
-    protected $breadcrumb;
-
-    public function title()
+    public function __invoke()
     {
         switch (request()) {
             case request()->route()->named('about'):
