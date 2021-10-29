@@ -2,10 +2,8 @@
 
 namespace App\View\Components\Guest;
 
-use App\Services\CountService;
 use Illuminate\View\Component;
 use App\Services\SectionService;
-use App\Models\Count as CountModel;
 
 class Count extends Component
 {

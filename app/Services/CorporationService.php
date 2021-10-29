@@ -3,17 +3,14 @@
 namespace App\Services;
 
 use App\Repositories\CorporationRepository;
-use App\Repositories\EnterpriseRepository;
 
-class ContactService
+class CorporationService
 {
     protected $corporation;
-    protected $enterprise;
 
-    public function __construct(CorporationRepository $corporation, EnterpriseRepository $enterprise)
+    public function __construct(CorporationRepository $corporation)
     {
         $this->corporation = $corporation;
-        $this->enterprise = $enterprise;
     }
 
     public function geolocalizationLink()
@@ -21,19 +18,19 @@ class ContactService
         return $this->corporation->geolocalizationLink();
     }
 
-    public function corporationName()
+    public function name()
     {
         return $this->corporation->name();
     }
 
+    public function contacts()
+    {
+        return $this->corporation->morphContacts_addressEmailPhoneWithIconMorphDescription();
+    }
     public function socialLinks()
     {
         return $this->corporation->withFacebookInstagramLinkedinTwitterYoutubeWithIcons();
     }
 
-    public function corporationContacts()
-    {
-        return $this->corporation->morphContacts_addressEmailPhoneWithIconMorphDescription();
-    }
 
 }

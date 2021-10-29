@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 
 class Faq extends Component
 {
-
     public $section;
 
     public function __construct(SectionService $section)

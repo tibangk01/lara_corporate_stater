@@ -15,6 +15,6 @@ class PrivacyPolicyService
 
     public function pageData()
     {
-        return $this->privacyPolicy->findWithDescription();
+        return $this->privacyPolicy->whereLastCorporationWithDescriptions();
     }
 }

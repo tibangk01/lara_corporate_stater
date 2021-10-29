@@ -11,6 +11,7 @@ class Breadcrumb extends Component
 
     public function __construct(BreadcrumbService $breadcrumb)
     {
+                    // __invoke call
         $this->title = $breadcrumb();
     }
 

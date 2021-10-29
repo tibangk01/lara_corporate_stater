@@ -57,14 +57,24 @@ class Corporation extends Model
 		return $this->hasOne(Team::class);
 	}
 
+    public function termsOfService()
+	{
+		return $this->hasOne(TermsOfService::class);
+	}
+
+    public function privacyPolicy()
+	{
+		return $this->hasOne(PrivacyPolicy::class);
+	}
+
     public function medias()
 	{
-		return $this->hasMany(Media::class, 'mediaable_id');
+		return $this->morphMany(Media::class, 'mediaable');
 	}
 
     public function links()
     {
-        return $this->hasMany(Link::class, 'linkable_id');
+        return $this->morphMany(Link::class, 'linkable');
     }
 
     public function contacts()

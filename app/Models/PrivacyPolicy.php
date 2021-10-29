@@ -38,6 +38,11 @@ class PrivacyPolicy extends Model
         return $this->belongsTo(Item::class);
     }
 
+    public function corporation()
+    {
+        return $this->belongsTo(Corporation::class);
+    }
+
     public function descriptions()
     {
         return $this->morphMany(Description::class, 'descriptionable');

@@ -8,15 +8,15 @@
 
                 <div class="row">
 
-                    <h3>{{ $corporateName }}</h3>
+                    <h3>{{ $corporationName }}</h3>
 
                     <div class="col-12 mb-3">
 
-                        @isset($socialLinks)
+                        @isset($corporationSocialLinks)
 
                         <div class="social-links mb-3">
 
-                            @forelse ($socialLinks as $link)
+                            @forelse ($corporationSocialLinks as $link)
 
                             <a href="{{ $link->url }}" class=""><i class="bx {{ $link->linkType->icon->is_extended ? 'bxl-' : 'bx-'  }}{{ $link->linkType->icon->class }}"></i></a>
 
@@ -40,7 +40,7 @@
 
                                 <div class="row">
 
-                                    {{-- @isset($corporationContacts)
+                                    @isset($corporationContacts)
 
                                     @forelse ($corporationContacts as $contact)
 
@@ -61,7 +61,7 @@
 
                                     @endforelse
 
-                                    @endisset --}}
+                                    @endisset
 
                                 </div>
 

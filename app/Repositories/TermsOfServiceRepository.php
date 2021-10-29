@@ -3,22 +3,22 @@
 namespace App\Repositories;
 
 use App\Models\Corporation;
-use App\Models\PrivacyPolicy;
+use App\Models\TermsOfService;
 
-class PrivacyPolicyRepository
+class TermsOfServiceRepository
 {
-    protected $privacyPolicy;
+    protected $termsOfService;
 
-    public function __construct(PrivacyPolicy $privacyPolicy)
+    public function __construct(TermsOfService $termsOfService)
     {
-        $this->privacyPolicy = $privacyPolicy;
+        $this->termsOfService = $termsOfService;
     }
 
     public function whereLastCorporationWithDescriptions()
     {
-        return $this->privacyPolicy->with(['corporation' => function ($q) {
+        return $this->termsOfService->with(['corporation' => function($q){
             $q->select('id')->whereId(Corporation::latest()->pluck('id'));
-        }, 'descriptions' => function ($q) {
+        }, 'descriptions' => function($q){
             $q->select(['id', 'descriptionable_id', 'title', 'content']);
         }])->get(['id', 'corporation_id', 'intro'])->first();
     }

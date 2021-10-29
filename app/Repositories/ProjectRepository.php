@@ -77,5 +77,4 @@ class ProjectRepository
                 'realization_date'
             ]);
     }
-    
 }
