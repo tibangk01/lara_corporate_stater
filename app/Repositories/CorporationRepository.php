@@ -172,5 +172,5 @@ class CorporationRepository
                 }]);
         }])->latest()->get(['id'])->first()->links;
     }
-    
+
 }

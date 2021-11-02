@@ -6,6 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>BizLand Bootstrap Template - Index</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -60,7 +61,6 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/ajax.js') }}"></script>
-
 </body>
 
 </html>

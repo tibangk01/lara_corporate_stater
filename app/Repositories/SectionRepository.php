@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Section;
+use App\Models\LinkType;
+use App\Models\Corporation;
 
 class SectionRepository
 {
@@ -180,6 +182,20 @@ class SectionRepository
                             }]);
                     }]);
             }])->get(['id', 'site_page_id', 'name', 'title', 'description'])->first();
+    }
+
+    // this resolve eager loading caused by this method in corporation repository
+    public function facebookInstagramLinkedinTwitterYoutubeWithIcons()
+    {
+        return Corporation::with(['links' => function ($q) {
+            $q->select(['id', 'link_type_id', 'linkable_id', 'url'])
+                ->whereIn('link_type_id', LinkType::whereIn('name', [
+                    'linkedin', 'facebook', 'instagram', 'twitter', 'youtube'
+                ])->pluck('id'))->with(['linkType' => function ($q) {
+                    $q->select(['id', 'icon_id'])
+                        ->with(['icon:id,class,is_extended']);
+                }]);
+        }])->latest()->get(['id'])->first()->links;
     }
 
 }

@@ -30,7 +30,7 @@
 
             <div class="col form-group">
 
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                <input type="text" class="form-control" name="email" id="email" placeholder="Your Email"
                      >
                     <span class="text-danger error-text email_error"></span>
             </div>

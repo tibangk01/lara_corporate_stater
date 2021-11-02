@@ -16,7 +16,7 @@ $(function () {
                     $.each(data.error, function (prefix, val) {
                         $("span." + prefix + "_error").text(val[0]);
                     });
-                } else if(data.status == 1)  {
+                } else if (data.status == 1) {
                     $("#main_form")[0].reset();
                     $("#message")
                         .html(
@@ -25,8 +25,7 @@ $(function () {
                         .show()
                         .delay(4000)
                         .fadeOut();
-                }else{
-
+                } else {
                     $("#main_form")[0].reset();
                     $("#message")
                         .html(
@@ -35,13 +34,12 @@ $(function () {
                         .show()
                         .delay(4000)
                         .fadeOut();
-
                 }
             },
         });
     });
 
-    $("#newsletter_form").on("submit", function (e) {
+    $("#newsletter_form").submit(function (e) {
         e.preventDefault();
         $.ajax({
             url: $(this).attr("action"),
@@ -58,7 +56,7 @@ $(function () {
                     $.each(data.error, function (prefix, val) {
                         $("span." + prefix + "_error").text(val[0]);
                     });
-                } else if(data.status == 1)  {
+                } else if (data.status == 1) {
                     $("#newsletter_form")[0].reset();
                     $("#newsletter")
                         .html(
@@ -67,8 +65,7 @@ $(function () {
                         .show()
                         .delay(4000)
                         .fadeOut();
-                }else{
-
+                } else {
                     $("#newsletter_form")[0].reset();
                     $("#newsletter")
                         .html(

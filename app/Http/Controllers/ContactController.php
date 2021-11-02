@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Services\CorporationService;
+use App\Services\SectionService;
 
 class ContactController extends Controller
 {
-    public function __invoke(CorporationService $corporation)
+    public function __invoke(
+        CorporationService $corporation,
+        SectionService $section
+    )
     {
-        //TODO: resolve eager loading.
         return view('pages.contact', [
             'corporationName' => $corporation->name(),
             'corporationContacts' => $corporation->contacts(),
-            'corporationSocialLinks' => $corporation->socialLinks(),
+            'corporationSocialLinks' => $section->socialLinks(),
         ]);
     }
 }

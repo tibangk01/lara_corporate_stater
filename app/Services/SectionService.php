@@ -63,4 +63,9 @@ class SectionService
         return  $this->section->pricing_ItemPricingCurrencyFeatures();
     }
 
+    public function socialLinks()
+    {
+        return $this->section->facebookInstagramLinkedinTwitterYoutubeWithIcons();
+    }
+
 }

@@ -27,6 +27,7 @@ class CorporationService
     {
         return $this->corporation->morphContacts_addressEmailPhoneWithIconMorphDescription();
     }
+
     public function socialLinks()
     {
         return $this->corporation->withFacebookInstagramLinkedinTwitterYoutubeWithIcons();
