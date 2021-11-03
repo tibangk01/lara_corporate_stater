@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>BizLand Bootstrap Template - Index</title>
+    <title>{{ $pageTitle ?? config('app.name') }} | {{ config('app.name') }} </title>
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -37,7 +37,6 @@
     <x-guest.top-bar/>
 
     <x-guest.navigation/>
-
 
     {{ $slot }}
 
