@@ -1,7 +1,7 @@
 @if ($section)
 
     <section id="services" class="services">
-        <!-- TODO : cards behavior + mt null for first 3 items-->
+
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
@@ -14,26 +14,39 @@
 
             </div>
 
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
 
                 @if ($section->items)
 
                     @foreach ($section->items as $item)
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
-                            data-aos-delay="200">
+                        <div class="col" data-aos="zoom-in" data-aos-delay="200">
 
-                            <div class="icon-box">
+                            <div class="card mt-2">
 
-                                <div class="icon">
-                                    <i
-                                        class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
+                                <div class="card-body p-0">
+
+                                    <div class="icon-box">
+
+                                        <div class="icon">
+
+                                            <i
+                                                class="bx {{ $item->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $item->iconableItem->icon->class }}"></i>
+
+                                        </div>
+
+                                        <h4 class="card-title">
+
+                                            <a
+                                                href="{{ route('service', ['id' => $item->iconableItem->service->id]) }}">{{ $item->iconableItem->title }}</a>
+
+                                        </h4>
+
+                                        <p class="card-text"> {{ $item->iconableItem->value }} </p>
+
+                                    </div>
 
                                 </div>
-
-                                <h4><a href="{{ route('service', ['id' => $item->iconableItem->service->id]) }}">{{ $item->iconableItem->title }}</a></h4>
-
-                                <p>{{ $item->iconableItem->value }}</p>
 
                             </div>
 

@@ -81,6 +81,11 @@
                                  <li><i class="bx bx-chevron-right"></i> <a
                                          href="#">{{ $service->iconableItem->title }}</a></li>
 
+                                  @if ($loop->last)
+                                  <li><i class="bx bx-chevron-right"></i> <a
+                                    href="{{ route('service') }}"> Other ...</a></li>
+                                  @endif
+
                              @empty
 
                                  No item yet.

@@ -12,7 +12,6 @@
 
                     <p>{{ $section->description }}</p>
 
-
                     <form action="{{ route('newsletter') }}" method="post" id="newsletter_form">
 
                         @csrf

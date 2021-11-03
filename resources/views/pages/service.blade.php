@@ -8,30 +8,46 @@
 
             <div class="container" data-aos="fade-up">
 
-                <div class="row">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
 
                     @forelse ($services as $service)
 
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in"
-                            data-aos-delay="100">
+                    <div class="col" data-aos="zoom-in" data-aos-delay="200">
 
-                            <div class="icon-box">
+                        <div class="card mt-2">
 
-                                <div class="icon">
-                                    <i
+                            <div class="card-body p-0">
+
+                                <div class="icon-box">
+
+                                    <div class="icon">
+
+                                        <i
                                         class="bx {{ $service->iconableItem->icon->is_extended ? 'bxl-' : 'bx-' }}{{ $service->iconableItem->icon->class }}"></i>
 
+                                    </div>
+
+                                    <h4 class="card-title">
+
+                                        <a
+                                            href="#">{{ $service->iconableItem->title }}</a>
+
+                                    </h4>
+
+                                    <p class="card-text"> {{ $service->iconableItem->value }} </p>
+
                                 </div>
-
-                                <h4><a href="">{{ $service->iconableItem->title }}</a></h4>
-
-                                <p>{{ $service->iconableItem->value }}</p>
 
                             </div>
 
                         </div>
+
+                    </div>
+
                     @empty
+
                         No item yet.
+
                     @endforelse
 
                 </div>

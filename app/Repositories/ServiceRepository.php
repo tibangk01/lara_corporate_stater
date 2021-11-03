@@ -17,13 +17,13 @@ class ServiceRepository
     {
         return $this->service->with(['iconableItem' => function ($q) {
             $q->select(['id', 'title']);
-        }])->get(['id', 'iconable_item_id']);
+        }])->get(['id', 'iconable_item_id'])->shuffle()->take(4);
     }
 
     public function findWithIcon()
     {
         return $this->service->with(['iconableItem' => function ($q) {
-            $q->select(['id', 'icon_id',  'title'])
+            $q->select(['id', 'icon_id',  'title', 'value'])
                 ->with(['icon:id,class,is_extended']);
         }])->get(['id', 'iconable_item_id']);
     }
@@ -32,7 +32,7 @@ class ServiceRepository
     {
         return $this->service->whereId(request()->input('id'))
             ->with(['iconableItem' => function ($q) {
-                $q->select(['id', 'icon_id',  'title'])
+                $q->select(['id', 'icon_id',  'title', 'value'])
                     ->with(['icon:id,class,is_extended']);
             }])->get(['id', 'iconable_item_id']);
     }
