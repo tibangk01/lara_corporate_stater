@@ -29,7 +29,7 @@ $(function () {
                     $("#main_form")[0].reset();
                     $("#message")
                         .html(
-                            '<div class="error-message d-block">Your message has been sent. Thank you!</div>'
+                            '<div class="error-message d-block">Error, retry later!</div>'
                         )
                         .show()
                         .delay(4000)
