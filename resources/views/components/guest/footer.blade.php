@@ -18,8 +18,14 @@
                              @foreach ($footerContacts as $contact)
 
                                  @if ($contact->contactType->name == 'Address')
-                                     <!-- TODO: split the value -->
-                                     {{ $contact->value }}
+
+                                     @foreach (Str::of($contact->value)->explode(' ') as $word)
+                                         {{ $word }}
+                                         @if ($loop->iteration % 3 == 0)
+                                             <br>
+                                         @endif
+
+                                     @endforeach
 
                                  @endif
 
@@ -81,10 +87,10 @@
                                  <li><i class="bx bx-chevron-right"></i> <a
                                          href="#">{{ $service->iconableItem->title }}</a></li>
 
-                                  @if ($loop->last)
-                                  <li><i class="bx bx-chevron-right"></i> <a
-                                    href="{{ route('service') }}"> Other ...</a></li>
-                                  @endif
+                                 @if ($loop->last)
+                                     <li><i class="bx bx-chevron-right"></i> <a href="{{ route('service') }}"> Other
+                                             ...</a></li>
+                                 @endif
 
                              @empty
 

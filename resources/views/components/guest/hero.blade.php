@@ -9,7 +9,7 @@
 
         <div class="d-flex">
 
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
 
             <a href="{{ $youtubeLink }}" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch
                     Video</span></a>

@@ -13,6 +13,11 @@ class CorporationService
         $this->corporation = $corporation;
     }
 
+    public function corporationId()
+    {
+        return $this->corporation->id();
+    }
+
     public function geolocalizationLink()
     {
         return $this->corporation->geolocalizationLink();

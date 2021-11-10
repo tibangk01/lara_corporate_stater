@@ -14,6 +14,11 @@ class CorporationRepository
         $this->corporation = $corporation;
     }
 
+    public function id()
+    {
+        return $this->corporation->latest()->get('id')->first()->id;
+    }
+
     public function addressPhone()
     {
         return $this->corporation->with(['contacts' => function ($query) {
