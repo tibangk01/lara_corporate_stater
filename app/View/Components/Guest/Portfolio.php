@@ -3,13 +3,12 @@
 namespace App\View\Components\Guest;
 
 use Illuminate\View\Component;
-use App\Services\ProjectCategoryService;
 use App\Services\SectionService;
+use App\Services\ProjectCategoryService;
 
 class Portfolio extends Component
 {
     public $section;
-
     public $projectCategories;
 
     public function __construct(

@@ -13,10 +13,10 @@ class EnterpriseRepository
         $this->enterprise = $enterprise;
     }
 
-    public function withLogoFind()
+    public function withLogo()
     {
-        return $this->enterprise->with(['logo' => function ($q) {
-            $q->select(['id', 'logoable_id', 'link']);
+        return $this->enterprise->with(['logo' => function ($query) {
+            $query->select(['id', 'logoable_id', 'link']);
         }])->inRandomOrder()->get(['id', 'name']);
     }
 }

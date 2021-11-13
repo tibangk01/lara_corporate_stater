@@ -8,13 +8,11 @@ use App\Services\TopBarService;
 class TopBar extends Component
 {
     public $contacts;
-
     public $socialLinks;
 
     public function __construct(TopBarService $corporation)
     {
         $this->contacts = $corporation->topBarContacts();
-
         $this->socialLinks = $corporation->topBarSocialLinks();
     }
 

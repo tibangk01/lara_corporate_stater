@@ -2,9 +2,8 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Corporation;
-use App\Services\NavigationService;
 use Illuminate\View\Component;
+use App\Services\NavigationService;
 
 class Navigation extends Component
 {
@@ -15,7 +14,6 @@ class Navigation extends Component
     {
         // $this->corporationLogo = $service->corporationLogo();
         $this->corporationName = $service->corporationName();
-
     }
 
     public function render()

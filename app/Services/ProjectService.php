@@ -13,10 +13,10 @@ class ProjectService
         $this->project = $project;
     }
 
-    public function pageData()
+    public function pageData($id)
     {
-        return request()->input('id')
-        ? $this->project->morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFindById()
-        : $this->project->morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFind();
+        return $id
+        ? $this->project->morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFindById($id)
+        : $this->project->morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHuman();
     }
 }

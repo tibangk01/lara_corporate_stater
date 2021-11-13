@@ -19,7 +19,7 @@
                 @forelse ($section->items as $item)
 
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-                        <!-- TODO: data-aos-delay -->
+                      
                         <div class="member">
 
                             <div class="member-img">

@@ -2,12 +2,11 @@
 
 namespace App\View\Components\Guest;
 
-use App\Services\SectionService;
 use Illuminate\View\Component;
+use App\Services\SectionService;
 
 class Newsletter extends Component
 {
-
     public $section;
 
     public function __construct(SectionService $section)

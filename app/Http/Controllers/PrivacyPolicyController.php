@@ -12,5 +12,4 @@ class PrivacyPolicyController extends Controller
             'privacyPolicy' => $privacyPolicy->pageData()
         ]);
     }
-    //TODO: design the db schema img
 }

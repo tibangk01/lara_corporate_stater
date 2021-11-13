@@ -13,7 +13,7 @@ class EmployeeRepository
         $this->employee = $employee;
     }
 
-    public function withOfficial_Work_HumanLinksLinkTypeIconfind()
+    public function withOfficial_Work_HumanLinksLinkTypeIcon()
     {
         return $this->employee->with(['official' => function ($query) {
             $query->select(['id', 'human_id', 'work_id'])
@@ -36,9 +36,9 @@ class EmployeeRepository
         }])->get(['id', 'official_id', 'profile']);
     }
 
-    public function withOfficial_Work_HumanLinksLinkTypeIconfindById()
+    public function withOfficial_Work_HumanLinksLinkTypeIconfindById($id)
     {
-        return $this->employee->whereId(request()->input('id'))->with(['official' => function ($query) {
+        return $this->employee->whereId($id)->with(['official' => function ($query) {
             $query->select(['id', 'human_id', 'work_id'])
                 ->with(['work' => function ($query) {
                     $query->select(['id', 'name']);

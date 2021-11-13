@@ -20,7 +20,7 @@ class HeroService
 
     public function heroBackground()
     {
-        return $this->corporation->heroBackground();
+        return $this->corporation->heroBackgroundLink();
     }
 
     public function youtubeLink()

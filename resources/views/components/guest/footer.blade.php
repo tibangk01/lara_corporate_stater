@@ -35,7 +35,7 @@
                              <br><br>
 
                              @foreach ($footerContacts as $contact)
-                                 <!-- TODO:order by name desc -->
+                                 
                                  @if ($contact->contactType->name != 'Address')
 
                                      <strong>{{ $contact->contactType->name }}:</strong>

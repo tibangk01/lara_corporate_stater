@@ -2,8 +2,8 @@
 
 namespace App\View\Components\Guest;
 
-use App\Services\SectionService;
 use Illuminate\View\Component;
+use App\Services\SectionService;
 
 class Faq extends Component
 {

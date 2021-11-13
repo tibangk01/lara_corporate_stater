@@ -12,7 +12,7 @@
 
                         <div class="count-box">
 
-                            <i class="bi bi-{{ $item->iconableItem->icon->class}}"></i>
+                            <i class="bi bi-{{ $item->iconableItem->icon->class }}"></i>
 
                             <span data-purecounter-start="0" data-purecounter-end="{{ $item->iconableItem->value }}"
                                 data-purecounter-duration="1" class="purecounter">

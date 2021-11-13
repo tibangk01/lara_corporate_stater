@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Guest;
 
-use App\Models\Skill as SkillModel;
 use App\Services\SkillService;
 use Illuminate\View\Component;
 
@@ -14,7 +13,6 @@ class Skill extends Component
     {
         $this->skills = $service->find();
     }
-
 
     public function render()
     {

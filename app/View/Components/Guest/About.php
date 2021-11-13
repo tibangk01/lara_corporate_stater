@@ -11,7 +11,7 @@ class About extends Component
 
     public function __construct(SectionService $service)
     {
-        $this->section = $service->aboutSectionData(); //TODO: change link --> url in db,
+        $this->section = $service->aboutSectionData();
     }
 
     public function render()

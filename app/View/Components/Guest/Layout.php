@@ -2,9 +2,8 @@
 
 namespace App\View\Components\Guest;
 
-use App\Services\PageTitleService;
-use Illuminate\Support\Str;
 use Illuminate\View\Component;
+use App\Services\PageTitleService;
 
 class Layout extends Component
 {

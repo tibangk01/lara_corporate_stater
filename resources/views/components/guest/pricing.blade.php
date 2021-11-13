@@ -15,7 +15,7 @@
             </div>
 
             <div class="row">
-                <!-- TODO: data-aos-delay, -->
+
                 @forelse ($section->items as $item)
 
                     <div class="col-lg-3 col-md-6 mt-lg-0" data-aos="fade-up" data-aos-delay="100">

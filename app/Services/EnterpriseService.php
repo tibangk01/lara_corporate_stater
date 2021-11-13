@@ -15,6 +15,6 @@ class EnterpriseService
 
     public function clientSectionData()
     {
-        return $this->repository->withLogoFind();
+        return $this->repository->withLogo();
     }
 }

@@ -13,7 +13,7 @@ class ProjectRepository
         $this->project = $project;
     }
 
-    public function morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFind()
+    public function morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHuman()
     {
         return $this->project->with(['medias' => function ($query) {
             $query->select(['id', 'mediaable_id', 'link']);
@@ -45,9 +45,9 @@ class ProjectRepository
         ]);
     }
 
-    public function morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFindById()
+    public function morphMediasDescriptionLinkwithProjectCategoryCustomer_EnterpriseOrClientWithOfficialHumanFindById($id)
     {
-        return $this->project->whereId(request()->input('id'))
+        return $this->project->whereId($id)
             ->with(['medias' => function ($query) {
                 $query->select(['id', 'mediaable_id', 'link']);
             }, 'description' => function ($query) {

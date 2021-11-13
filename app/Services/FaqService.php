@@ -13,8 +13,8 @@ class FaqService
         $this->faq = $faq;
     }
 
-    public function pageData($id = null)
+    public function pageData()
     {
-        return $this->faq->find($id);
+        return $this->faq->find();
     }
 }

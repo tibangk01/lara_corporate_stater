@@ -16,10 +16,10 @@ class PrivacyPolicyRepository
 
     public function whereLastCorporationWithDescriptions()
     {
-        return $this->privacyPolicy->with(['corporation' => function ($q) {
-            $q->select('id')->whereId(Corporation::latest()->pluck('id'));
-        }, 'descriptions' => function ($q) {
-            $q->select(['id', 'descriptionable_id', 'title', 'content']);
+        return $this->privacyPolicy->with(['corporation' => function ($query) {
+            $query->select('id')->whereId(Corporation::latest()->pluck('id'));
+        }, 'descriptions' => function ($query) {
+            $query->select(['id', 'descriptionable_id', 'title', 'content']);
         }])->get(['id', 'corporation_id', 'intro'])->first();
     }
 }
