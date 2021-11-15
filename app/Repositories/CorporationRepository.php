@@ -16,11 +16,6 @@ class CorporationRepository
         $this->corporation = $corporation;
     }
 
-    public function testons()
-    {
-        return true;
-    }
-
     public function id()
     {
         return $this->corporation->latest()->get('id')->first()->id;
